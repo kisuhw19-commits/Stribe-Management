@@ -26,6 +26,23 @@
         .player-name { font-size: 22px; font-weight: bold; }
         .player-info { color: #666; margin-top: 5px; }
         .player-detail { color: #888; font-size: 14px; margin-top: 8px; line-height: 1.6; }
+        /* 오늘 과제 섹션 */
+        .today-task-section { background: white; border-radius: 20px; padding: 20px; margin-bottom: 15px; }
+        .task-header { display: flex; align-items: center; gap: 8px; margin-bottom: 15px; padding-bottom: 12px; border-bottom: 1px solid #eee; }
+        .task-header-icon { font-size: 20px; }
+        .task-header-title { font-size: 18px; font-weight: bold; color: #333; flex: 1; }
+        .task-date { font-size: 13px; color: #888; }
+        .task-category { margin-bottom: 15px; }
+        .category-title { font-size: 14px; font-weight: 600; color: #667eea; margin-bottom: 8px; }
+        .category-content { background: #f8f9fa; border-radius: 10px; padding: 12px; }
+        .task-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; }
+        .task-row:not(:last-child) { border-bottom: 1px solid #eee; }
+        .task-row.single { justify-content: flex-start; }
+        .task-row .task-label { font-size: 14px; color: #555; }
+        .task-row .task-value { font-size: 14px; font-weight: 500; color: #333; }
+        .video-link { display: block; margin-top: 8px; color: #667eea; font-size: 13px; text-decoration: none; }
+        .video-btn { display: block; margin-top: 10px; padding: 12px; background: #667eea; color: white; text-align: center; border-radius: 10px; text-decoration: none; font-size: 14px; font-weight: 600; }
+        .task-status { text-align: center; font-size: 11px; color: #888; margin-top: 10px; }
         .menu-btn { display: block; width: 100%; padding: 20px; background: white; border: none; border-radius: 15px; margin-bottom: 10px; font-size: 16px; text-align: left; }
         .logout-btn { background: rgba(255,255,255,0.2); border: none; color: white; padding: 10px 20px; border-radius: 20px; margin-bottom: 20px; }
         .sub-header { background: white; padding: 15px 20px; padding-top: 50px; display: flex; align-items: center; gap: 15px; }
@@ -106,26 +123,46 @@
                 <div class="player-info" id="pInfo"></div>
                 <div class="player-detail" id="pDetail"></div>
             </div>
-            <button class="menu-btn" id="btnTodo">📋 오늘 해야할 일</button>
-            <button class="menu-btn" id="btnCondition">💪 데일리 컨디션</button>
-            <button class="menu-btn" id="btnWorkout">🏃 오늘 운동</button>
+            
+            <!-- 오늘 과제 섹션 -->
+            <div class="today-task-section">
+                <div class="task-header">
+                    <span class="task-header-icon">📋</span>
+                    <span class="task-header-title">오늘 과제</span>
+                    <span class="task-date" id="mainTodayDate"></span>
+                </div>
+                
+                <div class="task-category">
+                    <div class="category-title">🥗 영양 섭취</div>
+                    <div class="category-content" id="mainNutrition">
+                        <div class="task-row"><span class="task-label">수분 섭취</span><span class="task-value" id="mainWater">-</span></div>
+                        <div class="task-row"><span class="task-label">단백질 섭취</span><span class="task-value" id="mainProtein">-</span></div>
+                        <div class="task-row"><span class="task-label">추가 섭취</span><span class="task-value" id="mainFood">-</span></div>
+                    </div>
+                </div>
+                
+                <div class="task-category">
+                    <div class="category-title">🩹 회복 전략</div>
+                    <div class="category-content">
+                        <div class="task-row single"><span class="task-value" id="mainRecovery">-</span></div>
+                    </div>
+                </div>
+                
+                <div class="task-category">
+                    <div class="category-title">🏋️ 보충 훈련</div>
+                    <div class="category-content">
+                        <div class="task-row single"><span class="task-value" id="mainExercise">-</span></div>
+                    </div>
+                    <a class="video-btn" id="mainVideoLink" href="#" target="_blank" style="display:none;">📹 영상 보기</a>
+                </div>
+                
+                <div class="task-status" id="mainTaskStatus"></div>
+            </div>
+            
+            <!-- 메뉴 버튼들 -->
+            <button class="menu-btn" id="btnCondition">💪 데일리 컨디션 체크</button>
+            <button class="menu-btn" id="btnWorkout">🏃 오늘 훈련</button>
             <button class="menu-btn" id="btnTest">📊 피지컬 테스트</button>
-        </div>
-    </div>
-    <div class="screen" id="todoScreen">
-        <div class="sub-header">
-            <button class="back-btn" id="todoBack">←</button>
-            <div class="sub-title">오늘 해야할 일</div>
-        </div>
-        <div class="sub-content">
-            <div class="today-date" id="todayDate"></div>
-            <div class="section-title">🩹 회복 전략</div>
-            <div class="section-card" id="recoverySection"></div>
-            <div class="section-title">🥗 영양 섭취</div>
-            <div class="section-card" id="nutritionSection"></div>
-            <div class="section-title">🏋️ 보강 운동</div>
-            <div class="section-card" id="exerciseSection"></div>
-            <div class="status-msg" id="todoStatus"></div>
         </div>
     </div>
     <div class="screen" id="conditionScreen">
@@ -248,7 +285,7 @@
         </div>
     </div>
 <script>
-var API_URL = "https://script.google.com/macros/s/AKfycbwbJA2iphftsRJ8VY41wk_SJLUb-N1khQCldwDYSI46qKZ0THgY9vNscNufszh3WBNT/exec";
+var API_URL = "https://script.google.com/macros/s/AKfycbxDwHbfB4o46gbdGIsiOsYLKT8yp6PEMmwSEgiDkD9eTVg5Ylr447wOQHxd9OgCSjG4/exec";
 var players = [];
 var currentPlayer = null;
 
@@ -283,6 +320,11 @@ function formatBirthdate(date) {
         return str;
     }
     
+    // 앞자리 0이 잘린 경우 (예: 101 → 000101)
+    if (/^\d+$/.test(str) && str.length < 6) {
+        return str.padStart(6, "0");
+    }
+    
     // 96.09.20 형식 → 960920
     if (str.includes(".")) {
         var parts = str.split(".");
@@ -314,6 +356,10 @@ function normalizeInput(birth) {
         // 19960920 → 960920
         return s.slice(2);
     }
+    // 앞자리 0이 잘린 경우 (예: 101 → 000101)
+    if (s.length < 6) {
+        return s.padStart(6, "0");
+    }
     return s;
 }
 
@@ -326,6 +372,55 @@ function updateRpe() {
     else if (val <= 8) { emoji = "😤"; text = "높은 강도"; }
     else { emoji = "🥵"; text = "매우 높은 강도"; }
     document.getElementById("rpeDisplay").textContent = emoji + " 자각도: " + val + "/10 - " + text;
+}
+
+// 오늘 과제 불러오기
+function loadTodayTasks() {
+    var today = new Date();
+    var todayStr = today.getFullYear() + "-" + (today.getMonth()+1) + "-" + today.getDate();
+    document.getElementById("mainTodayDate").textContent = (today.getMonth()+1) + "월 " + today.getDate() + "일";
+    document.getElementById("mainTaskStatus").textContent = "로딩중...";
+    
+    fetch(API_URL + "?action=tasks")
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+            var myTask = null;
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].name === currentPlayer.name && data[i].date === todayStr) {
+                    myTask = data[i];
+                    break;
+                }
+            }
+            if (myTask) {
+                document.getElementById("mainWater").textContent = myTask.water ? myTask.water + "L" : "-";
+                document.getElementById("mainProtein").textContent = myTask.protein ? myTask.protein + "회" : "-";
+                document.getElementById("mainFood").textContent = myTask.food || "-";
+                document.getElementById("mainRecovery").textContent = myTask.recovery || "-";
+                document.getElementById("mainExercise").textContent = myTask.exercise || "-";
+                if (myTask.videoLink) {
+                    document.getElementById("mainVideoLink").href = myTask.videoLink;
+                    document.getElementById("mainVideoLink").style.display = "block";
+                } else {
+                    document.getElementById("mainVideoLink").style.display = "none";
+                }
+                document.getElementById("mainTaskStatus").textContent = "✓ 실시간 데이터";
+            } else {
+                setDefaultTasks();
+            }
+        })
+        .catch(function() {
+            setDefaultTasks();
+        });
+}
+
+function setDefaultTasks() {
+    document.getElementById("mainWater").textContent = "-";
+    document.getElementById("mainProtein").textContent = "-";
+    document.getElementById("mainFood").textContent = "-";
+    document.getElementById("mainRecovery").textContent = "-";
+    document.getElementById("mainExercise").textContent = "-";
+    document.getElementById("mainVideoLink").style.display = "none";
+    document.getElementById("mainTaskStatus").textContent = "오늘 등록된 과제가 없습니다";
 }
 
 document.getElementById("loginBtn").onclick = function() {
@@ -347,6 +442,8 @@ document.getElementById("loginBtn").onclick = function() {
         document.getElementById("pDetail").textContent = found.team + " | " + found.pos;
         document.getElementById("loginScreen").classList.remove("active");
         document.getElementById("mainScreen").classList.add("active");
+        // 오늘 과제 불러오기
+        loadTodayTasks();
     } else {
         // 등록되지 않은 선수 - 모달 표시
         document.getElementById("registerModal").classList.add("active");
@@ -356,57 +453,6 @@ document.getElementById("loginBtn").onclick = function() {
 document.getElementById("logoutBtn").onclick = function() {
     document.getElementById("mainScreen").classList.remove("active");
     document.getElementById("loginScreen").classList.add("active");
-};
-
-document.getElementById("btnTodo").onclick = function() {
-    document.getElementById("mainScreen").classList.remove("active");
-    document.getElementById("todoScreen").classList.add("active");
-    var today = new Date();
-    var todayStr = today.getFullYear() + "-" + (today.getMonth()+1) + "-" + today.getDate();
-    document.getElementById("todayDate").textContent = today.getFullYear() + "년 " + (today.getMonth()+1) + "월 " + today.getDate() + "일";
-    document.getElementById("recoverySection").innerHTML = "<div style='color:#888'>로딩중...</div>";
-    document.getElementById("nutritionSection").innerHTML = "";
-    document.getElementById("exerciseSection").innerHTML = "";
-    document.getElementById("todoStatus").textContent = "";
-    
-    fetch(API_URL + "?action=tasks")
-        .then(function(r) { return r.json(); })
-        .then(function(data) {
-            var myTask = null;
-            for (var i = 0; i < data.length; i++) {
-                if (data[i].name === currentPlayer.name && data[i].date === todayStr) {
-                    myTask = data[i];
-                    break;
-                }
-            }
-            if (myTask) {
-                document.getElementById("recoverySection").innerHTML = myTask.recovery ? "<div class='task-item'><span class='task-label'>물리치료</span><span class='task-value'>" + myTask.recovery + "</span></div>" : "<div style='color:#888'>등록된 항목이 없습니다</div>";
-                var nutHtml = "";
-                if (myTask.water) nutHtml += "<div class='task-item'><span class='task-label'>수분</span><span class='task-value'>" + myTask.water + "L</span></div>";
-                if (myTask.protein) nutHtml += "<div class='task-item'><span class='task-label'>단백질</span><span class='task-value'>" + myTask.protein + "회</span></div>";
-                if (myTask.food) nutHtml += "<div class='task-item'><span class='task-label'>추가 섭취</span><span class='task-value'>" + myTask.food + "</span></div>";
-                document.getElementById("nutritionSection").innerHTML = nutHtml || "<div style='color:#888'>등록된 항목이 없습니다</div>";
-                document.getElementById("exerciseSection").innerHTML = myTask.exercise ? "<div class='task-item'><span class='task-label'>추가 운동</span><span class='task-value'>" + myTask.exercise + "</span></div>" : "<div style='color:#888'>등록된 항목이 없습니다</div>";
-                document.getElementById("todoStatus").textContent = "✓ 실시간 데이터";
-            } else {
-                showFallbackTodo();
-            }
-        })
-        .catch(function() {
-            showFallbackTodo();
-        });
-};
-
-function showFallbackTodo() {
-    document.getElementById("recoverySection").innerHTML = "<div class='task-item'><span class='task-label'>물리치료</span><span class='task-value'>폼롤러, 냉찜질/냉</span></div>";
-    document.getElementById("nutritionSection").innerHTML = "<div class='task-item'><span class='task-label'>수분</span><span class='task-value'>3L</span></div><div class='task-item'><span class='task-label'>단백질</span><span class='task-value'>2회</span></div><div class='task-item'><span class='task-label'>추가 섭취</span><span class='task-value'>베리류 과일</span></div>";
-    document.getElementById("exerciseSection").innerHTML = "<div class='task-item'><span class='task-label'>추가 운동</span><span class='task-value'>저강도 런닝 40분이상</span></div>";
-    document.getElementById("todoStatus").textContent = "오프라인 데이터";
-}
-
-document.getElementById("todoBack").onclick = function() {
-    document.getElementById("todoScreen").classList.remove("active");
-    document.getElementById("mainScreen").classList.add("active");
 };
 
 document.getElementById("btnCondition").onclick = function() {
