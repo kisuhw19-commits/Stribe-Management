@@ -607,7 +607,7 @@
 // =====================================================
 // 설정
 // =====================================================
-const API_URL = "https://script.google.com/macros/s/AKfycby3LKIkLnSLncriZbhlZt7Gly8r6NGw2p17QCfQIKLtXDjvdOFfJXu_WM5OMaOYt0pe/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbwhd09t-7hMy5APQPl9FYg7P6Z8vI-AbREC2wGvqK3kDDw08A4ow31ECa_MLh1o_2hS/exec";
 
 // 코치 계정 (실제로는 서버에서 관리)
 const COACHES = [
@@ -767,15 +767,16 @@ function setupEventListeners() {
     
     // 새로고침 버튼들
     document.getElementById('refreshCondition').addEventListener('click', function() {
+        this.classList.add('loading');
+        this.textContent = '로딩...';
+        loadPlayers(); // 선수 목록도 새로고침
         if (currentSelectedPlayer) {
-            this.classList.add('loading');
-            this.textContent = '로딩...';
             loadConditionData(currentSelectedPlayer);
-            setTimeout(() => {
-                this.classList.remove('loading');
-                this.textContent = '🔄 새로고침';
-            }, 1000);
         }
+        setTimeout(() => {
+            this.classList.remove('loading');
+            this.textContent = '🔄 새로고침';
+        }, 1000);
     });
     
     document.getElementById('refreshTraining').addEventListener('click', function() {
@@ -896,16 +897,18 @@ function loadConditionData(playerName) {
         </div>
     `;
     
-    // 최근 6일 날짜 계산 (D-6 ~ D-1, TODAY 제외)
+    // 최근 6일 날짜 계산 (어제부터 6일 전까지)
     const dates = [];
     const today = new Date();
     for (let i = 6; i >= 1; i--) {
         const d = new Date(today);
         d.setDate(d.getDate() - i);
+        const month = d.getMonth() + 1;
+        const day = d.getDate();
         dates.push({
-            label: `D-${i}`,
+            label: `${month}/${day}`,
             date: d.toISOString().split('T')[0],
-            display: `${d.getMonth() + 1}/${d.getDate()}`
+            display: `${d.toLocaleDateString('ko-KR', { weekday: 'short' })}`
         });
     }
     
