@@ -547,7 +547,7 @@ document.getElementById("submitRegister").onclick = function() {
             if (result.success) {
                 document.getElementById("registerStatus").style.color = "rgba(255,255,255,0.9)";
                 document.getElementById("registerStatus").textContent = "✓ 등록되었습니다! 로그인해주세요.";
-                // 선수 목록 다시 불러오기
+                // 선수 목록 다시 불러오기 - 완료 후 화면 이동
                 fetch(API_URL)
                     .then(function(r) { return r.json(); })
                     .then(function(data) {
@@ -560,11 +560,12 @@ document.getElementById("submitRegister").onclick = function() {
                                 sport: p.sport
                             };
                         });
+                        // 목록 갱신 완료 후 화면 이동
+                        setTimeout(function() {
+                            document.getElementById("registerScreen").classList.remove("active");
+                            document.getElementById("loginScreen").classList.add("active");
+                        }, 1000);
                     });
-                setTimeout(function() {
-                    document.getElementById("registerScreen").classList.remove("active");
-                    document.getElementById("loginScreen").classList.add("active");
-                }, 1500);
             } else {
                 document.getElementById("registerStatus").style.color = "#ff6b6b";
                 document.getElementById("registerStatus").textContent = "등록 실패. 다시 시도해주세요.";
