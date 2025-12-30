@@ -70,7 +70,7 @@
         .player-chip:hover { border-color: #3b82f6; }
         .player-chip.selected { background: rgba(59, 130, 246, 0.2); border-color: #3b82f6; }
         .player-chip .name { font-size: 14px; font-weight: 600; color: #f1f5f9; }
-        .player-chip .pos { font-size: 11px; color: #64748b; margin-top: 2px; }
+        .player-chip .pos, .player-chip .birth { font-size: 11px; color: #64748b; margin-top: 2px; }
         
         /* 폼 요소 */
         .form-group { margin-bottom: 20px; }
@@ -361,8 +361,7 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label">적용 날짜</label>
-                    <div class="form-input" id="strategyDateDisplay" style="background: #1e293b; color: #3b82f6; font-weight: 600;">TODAY</div>
-                    <input type="hidden" id="strategyDate">
+                    <input type="date" class="form-input" id="strategyDate">
                 </div>
                 <div class="form-group">
                     <label class="form-label">🥗 영양 섭취</label>
@@ -637,18 +636,12 @@ function initDate() {
     });
     document.getElementById('todayDate').textContent = dateStr;
     
-    // 날짜 입력 기본값
+    // 날짜 입력 기본값 (오늘)
     const isoDate = today.toISOString().split('T')[0];
     document.getElementById('strategyDate').value = isoDate;
     document.getElementById('inbodyDate').value = isoDate;
     document.getElementById('fmsDate').value = isoDate;
     document.getElementById('runningDate').value = isoDate;
-    
-    // 과제지정 날짜 표시 (TODAY + 실제 날짜)
-    const todayDisplay = today.toLocaleDateString('ko-KR', { 
-        month: 'long', day: 'numeric', weekday: 'short' 
-    });
-    document.getElementById('strategyDateDisplay').textContent = 'TODAY - ' + todayDisplay;
     
     // datetime-local 기본값
     const now = new Date();
@@ -660,21 +653,27 @@ function loadPlayers() {
     fetch(API_URL)
         .then(r => r.json())
         .then(data => {
+            console.log('API 응답 데이터:', data);
+            if (data && data.length > 0) {
+                console.log('첫 번째 선수 데이터 구조:', data[0]);
+            }
             players = data.map(p => ({
-                name: p.name,
-                birth: p.birthdate,
-                team: p.team,
-                pos: p.position,
-                sport: p.sport
+                name: p.name || p.이름,
+                birth: p.생년월일 || p.birthdate || p.birth || '',
+                team: p.team || p.팀,
+                pos: p.position || p.포지션,
+                sport: p.sport || p.종목
             }));
+            console.log('매핑된 선수 데이터:', players);
             renderPlayerGrids();
         })
-        .catch(() => {
+        .catch((error) => {
+            console.error('API 호출 실패:', error);
             // 오프라인 폴백
             players = [
-                { name: "홍길동", pos: "FW", team: "대전하나시티즌 U18" },
-                { name: "김철수", pos: "MF", team: "대전하나시티즌 U18" },
-                { name: "이영희", pos: "DF", team: "대전하나시티즌 U18" }
+                { name: "홍길동", birth: "2007-03-15", pos: "FW", team: "대전하나시티즌 U18" },
+                { name: "김철수", birth: "2007-08-22", pos: "MF", team: "대전하나시티즌 U18" },
+                { name: "이영희", birth: "2008-01-10", pos: "DF", team: "대전하나시티즌 U18" }
             ];
             renderPlayerGrids();
         });
@@ -686,12 +685,23 @@ function renderPlayerGrids() {
         const grid = document.getElementById(gridId);
         if (!grid) return;
         
-        grid.innerHTML = players.map(p => `
-            <div class="player-chip" data-player="${p.name}">
+        grid.innerHTML = players.map(p => {
+            // 생년월일 포맷팅 (YYYY-MM-DD → YY.MM.DD)
+            let birthDisplay = '';
+            if (p.birth) {
+                const parts = p.birth.split('-');
+                if (parts.length === 3) {
+                    birthDisplay = `${parts[0].slice(2)}.${parts[1]}.${parts[2]}`;
+                } else {
+                    birthDisplay = p.birth;
+                }
+            }
+            return `
+            <div class="player-chip" data-player="${p.name}" data-birth="${p.birth || ''}">
                 <div class="name">${p.name}</div>
-                <div class="pos">${p.pos || ''}</div>
+                <div class="birth">${birthDisplay}</div>
             </div>
-        `).join('');
+        `}).join('');
         
         // 클릭 이벤트
         grid.querySelectorAll('.player-chip').forEach(chip => {
