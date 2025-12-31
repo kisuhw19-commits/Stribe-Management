@@ -70,7 +70,7 @@
         .player-chip:hover { border-color: #3b82f6; }
         .player-chip.selected { background: rgba(59, 130, 246, 0.2); border-color: #3b82f6; }
         .player-chip .name { font-size: 14px; font-weight: 600; color: #f1f5f9; }
-        .player-chip .pos, .player-chip .birth { font-size: 11px; color: #64748b; margin-top: 2px; }
+        .player-chip .birth { font-size: 11px; color: #64748b; margin-top: 2px; }
         
         /* 폼 요소 */
         .form-group { margin-bottom: 20px; }
@@ -79,7 +79,6 @@
         .form-input:focus, .form-select:focus, .form-textarea:focus { outline: none; border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2); }
         .form-textarea { min-height: 120px; resize: vertical; font-family: inherit; }
         .form-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
-        .form-row-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
         
         /* 체크박스 그리드 */
         .checkbox-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
@@ -98,35 +97,6 @@
         .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4); }
         .btn-secondary { background: #334155; color: #f1f5f9; }
         .btn-full { width: 100%; }
-        .btn-group { display: flex; gap: 10px; margin-top: 20px; }
-        
-        /* 데이터 테이블 */
-        .data-table { width: 100%; border-collapse: collapse; }
-        .data-table th, .data-table td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #334155; }
-        .data-table th { background: #0f172a; color: #94a3b8; font-size: 13px; font-weight: 600; }
-        .data-table td { color: #e2e8f0; font-size: 14px; }
-        .data-table tr:hover td { background: rgba(59, 130, 246, 0.05); }
-        
-        /* 컨디션 카드 */
-        .condition-card { background: #0f172a; border: 1px solid #334155; border-radius: 12px; padding: 16px; margin-bottom: 12px; }
-        .condition-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-        .condition-player { font-size: 16px; font-weight: 600; color: #f1f5f9; }
-        .condition-date { font-size: 12px; color: #64748b; }
-        .condition-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-        .condition-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #1e293b; }
-        .condition-item:last-child { border-bottom: none; }
-        .condition-label { font-size: 13px; color: #94a3b8; }
-        .condition-value { font-size: 13px; font-weight: 500; color: #f1f5f9; }
-        
-        /* RPE 배지 */
-        .rpe-badge { padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; }
-        .rpe-low { background: rgba(34, 197, 94, 0.2); color: #4ade80; }
-        .rpe-mid { background: rgba(234, 179, 8, 0.2); color: #facc15; }
-        .rpe-high { background: rgba(239, 68, 68, 0.2); color: #f87171; }
-        
-        /* 날짜 필터 */
-        .date-filter { display: flex; gap: 10px; align-items: center; margin-bottom: 20px; flex-wrap: wrap; }
-        .date-filter input[type="date"] { padding: 10px 14px; background: #0f172a; border: 1px solid #334155; border-radius: 8px; color: #f1f5f9; font-size: 14px; }
         
         /* 로딩 */
         .loading { text-align: center; padding: 40px; color: #64748b; }
@@ -134,57 +104,38 @@
         @keyframes spin { to { transform: rotate(360deg); } }
         
         /* 상태 메시지 */
-        .status-msg { text-align: center; padding: 15px; font-size: 14px; border-radius: 10px; margin-top: 15px; }
+        .status-msg { padding: 12px; border-radius: 8px; text-align: center; margin-top: 15px; font-size: 14px; }
         .status-success { background: rgba(34, 197, 94, 0.2); color: #4ade80; }
         .status-error { background: rgba(239, 68, 68, 0.2); color: #f87171; }
         
+        /* 이미지 업로드 */
+        .image-upload-area { border: 2px dashed #334155; border-radius: 12px; padding: 30px; text-align: center; cursor: pointer; transition: all 0.2s; }
+        .image-upload-area:hover { border-color: #3b82f6; background: rgba(59, 130, 246, 0.05); }
+        .image-upload-area.has-image { border-style: solid; border-color: #3b82f6; }
+        .image-preview { max-width: 100%; max-height: 200px; border-radius: 8px; margin-top: 10px; }
+        .image-upload-icon { font-size: 40px; margin-bottom: 10px; }
+        .image-upload-text { color: #64748b; font-size: 14px; }
+        
+        /* 컨디션 테이블 */
+        .condition-table-wrapper { overflow-x: auto; }
+        .condition-table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 600px; }
+        .condition-table th, .condition-table td { padding: 10px 8px; text-align: center; border: 1px solid #334155; }
+        .condition-table th { background: #1e3a5f; color: #e2e8f0; font-weight: 600; }
+        .condition-table td { background: #0f172a; color: #e2e8f0; }
+        .category-group { background: #1e293b !important; font-weight: 600; color: #94a3b8; writing-mode: vertical-rl; text-orientation: mixed; padding: 15px 8px !important; }
+        .category-cell { background: #162032 !important; color: #94a3b8; font-weight: 500; text-align: left !important; padding-left: 12px !important; }
+        .no-data { color: #475569; }
+        .rpe-cell { padding: 4px 8px; border-radius: 4px; font-weight: 600; }
+        .rpe-low { background: rgba(34, 197, 94, 0.2); color: #4ade80; }
+        .rpe-mid { background: rgba(234, 179, 8, 0.2); color: #facc15; }
+        .rpe-high { background: rgba(239, 68, 68, 0.2); color: #f87171; }
+        
         /* 빈 상태 */
         .empty-state { text-align: center; padding: 60px 20px; color: #64748b; }
-        .empty-state .icon { font-size: 48px; margin-bottom: 15px; opacity: 0.5; }
-        .empty-state .text { font-size: 15px; }
+        .empty-state .icon { font-size: 48px; margin-bottom: 15px; }
+        .empty-state .text { font-size: 16px; }
         
-        /* 테스트 결과 카드 */
-        .test-card { background: #0f172a; border: 1px solid #334155; border-radius: 12px; padding: 16px; margin-bottom: 15px; }
-        .test-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-        .test-title { font-size: 15px; font-weight: 600; color: #f1f5f9; }
-        .test-value-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-        .test-value-item { background: #1e293b; padding: 12px; border-radius: 8px; }
-        .test-value-label { font-size: 12px; color: #64748b; margin-bottom: 4px; }
-        .test-value-num { font-size: 18px; font-weight: 700; color: #3b82f6; }
-        .test-value-unit { font-size: 12px; color: #94a3b8; margin-left: 2px; }
-        /* 7일 컨디션 테이블 */
-        .condition-table-wrapper { overflow-x: auto; margin-top: 15px; }
-        .condition-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
-        .condition-table th, .condition-table td { padding: 10px 6px; text-align: center; border: 1px solid #334155; font-size: 13px; overflow: hidden; text-overflow: ellipsis; }
-        .condition-table th { background: #0f172a; color: #94a3b8; font-weight: 600; white-space: nowrap; }
-        .condition-table th.day-header { background: linear-gradient(135deg, #1e3a5f, #0f172a); color: #f1f5f9; }
-        .condition-table th.today-header { background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; }
-        .condition-table td { background: #1e293b; color: #e2e8f0; word-wrap: break-word; }
-        .condition-table td.today-col { background: rgba(59, 130, 246, 0.15); }
-        .condition-table .category-group { background: linear-gradient(135deg, #1e3a5f, #0f172a); color: #f1f5f9; font-weight: 600; font-size: 13px; text-align: center; width: 60px; min-width: 60px; max-width: 60px; }
-        .condition-table .category-cell { background: #0f172a; color: #94a3b8; font-weight: 500; text-align: left; padding-left: 8px; white-space: nowrap; width: 70px; min-width: 70px; max-width: 70px; }
-        .condition-table .data-cell { font-size: 12px; }
-        .condition-table .data-cell.long-text { font-size: 10px; }
-        .condition-table .no-data { color: #475569; font-style: italic; }
-        .condition-table .rpe-cell { font-weight: 600; }
-        .condition-table .rpe-low { color: #4ade80; }
-        .condition-table .rpe-mid { color: #facc15; }
-        .condition-table .rpe-high { color: #f87171; }
-        
-        /* 새로고침 버튼 */
-        .refresh-btn { background: rgba(59, 130, 246, 0.2); border: 1px solid #3b82f6; color: #60a5fa; padding: 8px 14px; border-radius: 8px; font-size: 13px; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.2s; }
-        .refresh-btn:hover { background: rgba(59, 130, 246, 0.3); }
-        .refresh-btn.loading { opacity: 0.6; pointer-events: none; }
-        
-        /* 반응형 */
-        @media (max-width: 600px) {
-            .menu-grid { grid-template-columns: 1fr; }
-            .form-row { grid-template-columns: 1fr; }
-            .form-row-3 { grid-template-columns: 1fr; }
-            .checkbox-grid { grid-template-columns: repeat(2, 1fr); }
-            .condition-grid { grid-template-columns: 1fr; }
-            .test-value-grid { grid-template-columns: 1fr; }
-        }
+        .refresh-btn { background: rgba(59, 130, 246, 0.2); border: 1px solid #3b82f6; color: #60a5fa; padding: 8px 16px; border-radius: 8px; font-size: 13px; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -193,9 +144,9 @@
         <div class="login-wrapper">
             <div class="login-container">
                 <div class="logo">
-                    <span>📋</span>
+                    <span>⚽</span>
                     <h1>Stribe Coach</h1>
-                    <p>코칭 스태프 전용</p>
+                    <p>코치 전용 관리 시스템</p>
                 </div>
                 <div class="input-group">
                     <label>아이디</label>
@@ -216,17 +167,16 @@
         <div class="dashboard">
             <div class="header">
                 <div>
-                    <div class="header-title">Stribe Coach</div>
+                    <div class="header-title">⚽ Stribe Coach</div>
                     <div class="header-date" id="todayDate"></div>
                 </div>
                 <button class="logout-btn" id="logoutBtn">로그아웃</button>
             </div>
-            
             <div class="menu-grid">
                 <div class="menu-card" data-menu="condition">
                     <div class="menu-icon">📊</div>
                     <div class="menu-title">Personal Condition</div>
-                    <div class="menu-desc">선수 컨디션 데이터 조회</div>
+                    <div class="menu-desc">선수별 컨디션 확인</div>
                 </div>
                 <div class="menu-card" data-menu="training">
                     <div class="menu-icon">📝</div>
@@ -239,20 +189,20 @@
                     <div class="menu-desc">선수별 과제 지정</div>
                 </div>
                 <div class="menu-card" data-menu="test">
-                    <div class="menu-icon">🔬</div>
+                    <div class="menu-icon">🏃</div>
                     <div class="menu-title">Test Result</div>
-                    <div class="menu-desc">피지컬 테스트 결과 입력</div>
+                    <div class="menu-desc">테스트 결과 입력</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Personal Condition Check -->
+    <!-- Personal Condition -->
     <div class="screen" id="conditionScreen">
         <div class="sub-header">
-            <button class="back-btn" data-back="main">←</button>
+            <button class="back-btn">←</button>
             <div class="sub-title">Personal Condition Check</div>
-            <button class="refresh-btn" id="refreshCondition" style="margin-left: auto;">🔄 새로고침</button>
+            <button class="refresh-btn" id="refreshCondition">🔄 새로고침</button>
         </div>
         <div class="sub-content">
             <div class="card">
@@ -261,7 +211,6 @@
                 </div>
                 <div class="player-select-grid" id="conditionPlayerGrid"></div>
             </div>
-            
             <div id="conditionDataContainer">
                 <div class="empty-state">
                     <div class="icon">👤</div>
@@ -274,9 +223,9 @@
     <!-- Training Log -->
     <div class="screen" id="trainingScreen">
         <div class="sub-header">
-            <button class="back-btn" data-back="main">←</button>
+            <button class="back-btn">←</button>
             <div class="sub-title">Training Log</div>
-            <button class="refresh-btn" id="refreshTraining" style="margin-left: auto;">🔄 새로고침</button>
+            <button class="refresh-btn" id="refreshTraining">🔄 새로고침</button>
         </div>
         <div class="sub-content">
             <div class="tab-nav">
@@ -287,11 +236,29 @@
             <div id="trainingInputTab">
                 <div class="card">
                     <div class="card-header">
+                        <div class="card-title">👤 선수 선택</div>
+                        <span class="card-badge" id="trainingSelectedCount">0명 선택</span>
+                    </div>
+                    <div class="player-select-grid" id="trainingPlayerGrid"></div>
+                    <div style="margin-top: 10px;">
+                        <button class="btn btn-secondary" id="trainingSelectAll" style="padding: 8px 16px; font-size: 13px;">전체 선택</button>
+                        <button class="btn btn-secondary" id="trainingDeselectAll" style="padding: 8px 16px; font-size: 13px; margin-left: 8px;">전체 해제</button>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
                         <div class="card-title">📝 훈련 일지 작성</div>
                     </div>
-                    <div class="form-group">
-                        <label class="form-label">훈련 일시</label>
-                        <input type="datetime-local" class="form-input" id="trainingDateTime">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">훈련 날짜</label>
+                            <input type="date" class="form-input" id="trainingDate">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">훈련 시각 (24시간)</label>
+                            <input type="text" class="form-input" id="trainingTime" placeholder="14:30" maxlength="5">
+                        </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group">
@@ -319,6 +286,15 @@
                         <label class="form-label">훈련 내용</label>
                         <textarea class="form-textarea" id="trainingContent" placeholder="훈련 세부 내용을 입력하세요"></textarea>
                     </div>
+                    <div class="form-group">
+                        <label class="form-label">📷 이미지 첨부 (선택)</label>
+                        <div class="image-upload-area" id="imageUploadArea">
+                            <div class="image-upload-icon">📷</div>
+                            <div class="image-upload-text">클릭하여 이미지 선택</div>
+                            <input type="file" id="trainingImage" accept="image/*" style="display: none;">
+                        </div>
+                        <img id="imagePreview" class="image-preview" style="display: none;">
+                    </div>
                     <button class="btn btn-primary btn-full" id="saveTrainingBtn">저장하기</button>
                     <div id="trainingStatus"></div>
                 </div>
@@ -343,9 +319,9 @@
     <!-- Conditioning Strategy -->
     <div class="screen" id="strategyScreen">
         <div class="sub-header">
-            <button class="back-btn" data-back="main">←</button>
+            <button class="back-btn">←</button>
             <div class="sub-title">Conditioning Strategy</div>
-            <button class="refresh-btn" id="refreshStrategy" style="margin-left: auto;">🔄 새로고침</button>
+            <button class="refresh-btn" id="refreshStrategy">🔄 새로고침</button>
         </div>
         <div class="sub-content">
             <div class="card">
@@ -360,68 +336,41 @@
                     <div class="card-title">🎯 과제 지정</div>
                 </div>
                 <div class="form-group">
-                    <label class="form-label">적용 날짜</label>
+                    <label class="form-label">날짜</label>
                     <input type="date" class="form-input" id="strategyDate">
                 </div>
-                <div class="form-group">
-                    <label class="form-label">🥗 영양 섭취</label>
-                    <div class="form-row-3">
-                        <div>
-                            <label class="form-label" style="font-size: 12px; color: #64748b;">수분 섭취 (L)</label>
-                            <input type="number" class="form-input" id="strategyWater" step="0.25" placeholder="2.5">
-                        </div>
-                        <div>
-                            <label class="form-label" style="font-size: 12px; color: #64748b;">단백질 (회)</label>
-                            <input type="number" class="form-input" id="strategyProtein" placeholder="4">
-                        </div>
-                        <div>
-                            <label class="form-label" style="font-size: 12px; color: #64748b;">추가 섭취</label>
-                            <input type="text" class="form-input" id="strategyFood" placeholder="예: 바나나">
-                        </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">수분 섭취 (L)</label>
+                        <input type="text" class="form-input" id="strategyWater" placeholder="2.0">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">단백질 섭취 (회)</label>
+                        <input type="text" class="form-input" id="strategyProtein" placeholder="3">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-label">🩹 회복 전략</label>
-                    <div class="checkbox-grid" id="strategyRecoveryGrid">
-                        <label class="checkbox-item" data-value="폼롤러">
-                            <input type="checkbox">
-                            <div class="checkbox-box"></div>
-                            <span class="checkbox-label">폼롤러</span>
-                        </label>
-                        <label class="checkbox-item" data-value="스트레칭">
-                            <input type="checkbox">
-                            <div class="checkbox-box"></div>
-                            <span class="checkbox-label">스트레칭</span>
-                        </label>
-                        <label class="checkbox-item" data-value="냉찜질/냉욕">
-                            <input type="checkbox">
-                            <div class="checkbox-box"></div>
-                            <span class="checkbox-label">냉찜질/냉욕</span>
-                        </label>
-                        <label class="checkbox-item" data-value="물리치료">
-                            <input type="checkbox">
-                            <div class="checkbox-box"></div>
-                            <span class="checkbox-label">물리치료</span>
-                        </label>
-                        <label class="checkbox-item" data-value="한방치료">
-                            <input type="checkbox">
-                            <div class="checkbox-box"></div>
-                            <span class="checkbox-label">한방치료</span>
-                        </label>
-                        <label class="checkbox-item" data-value="압박의류">
-                            <input type="checkbox">
-                            <div class="checkbox-box"></div>
-                            <span class="checkbox-label">압박의류</span>
-                        </label>
+                    <label class="form-label">추가 섭취</label>
+                    <input type="text" class="form-input" id="strategyFood" placeholder="예: 바나나, 견과류">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">회복 전략</label>
+                    <div class="checkbox-grid">
+                        <div class="checkbox-item" data-value="폼롤러"><div class="checkbox-box"></div><span class="checkbox-label">폼롤러</span></div>
+                        <div class="checkbox-item" data-value="스트레칭"><div class="checkbox-box"></div><span class="checkbox-label">스트레칭</span></div>
+                        <div class="checkbox-item" data-value="마사지"><div class="checkbox-box"></div><span class="checkbox-label">마사지</span></div>
+                        <div class="checkbox-item" data-value="냉찜질"><div class="checkbox-box"></div><span class="checkbox-label">냉찜질</span></div>
+                        <div class="checkbox-item" data-value="온찜질"><div class="checkbox-box"></div><span class="checkbox-label">온찜질</span></div>
+                        <div class="checkbox-item" data-value="압박의류"><div class="checkbox-box"></div><span class="checkbox-label">압박의류</span></div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-label">🏋️ 보충 훈련</label>
-                    <input type="text" class="form-input" id="strategyExercise" placeholder="보충 훈련 내용">
+                    <label class="form-label">보충 훈련</label>
+                    <textarea class="form-textarea" id="strategyExercise" placeholder="예: 코어 운동 20분, 밴드 스트레칭"></textarea>
                 </div>
                 <div class="form-group">
-                    <label class="form-label">🔗 영상 링크</label>
-                    <input type="url" class="form-input" id="strategyVideoLink" placeholder="https://youtube.com/...">
+                    <label class="form-label">영상 링크 (선택)</label>
+                    <input type="text" class="form-input" id="strategyVideoLink" placeholder="https://youtube.com/...">
                 </div>
                 <button class="btn btn-primary btn-full" id="saveStrategyBtn">저장하기</button>
                 <div id="strategyStatus"></div>
@@ -429,12 +378,12 @@
         </div>
     </div>
 
-    <!-- Test Result & Analysis -->
+    <!-- Test Result -->
     <div class="screen" id="testScreen">
         <div class="sub-header">
-            <button class="back-btn" data-back="main">←</button>
+            <button class="back-btn">←</button>
             <div class="sub-title">Test Result & Analysis</div>
-            <button class="refresh-btn" id="refreshTest" style="margin-left: auto;">🔄 새로고침</button>
+            <button class="refresh-btn" id="refreshTest">🔄 새로고침</button>
         </div>
         <div class="sub-content">
             <div class="card">
@@ -445,17 +394,14 @@
             </div>
             
             <div class="tab-nav">
-                <button class="tab-btn active" data-tab="inbody">인바디</button>
-                <button class="tab-btn" data-tab="fms">FMS</button>
-                <button class="tab-btn" data-tab="running">런닝 능력</button>
+                <button class="tab-btn active" data-tab="inbody">📊 인바디</button>
+                <button class="tab-btn" data-tab="fms">🤸 FMS</button>
+                <button class="tab-btn" data-tab="running">🏃 런닝</button>
             </div>
             
-            <!-- 인바디 탭 -->
             <div id="inbodyTab">
                 <div class="card">
-                    <div class="card-header">
-                        <div class="card-title">📏 인바디 측정</div>
-                    </div>
+                    <div class="card-header"><div class="card-title">📊 인바디 측정</div></div>
                     <div class="form-group">
                         <label class="form-label">측정 날짜</label>
                         <input type="date" class="form-input" id="inbodyDate">
@@ -463,87 +409,81 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label class="form-label">신장 (cm)</label>
-                            <input type="number" class="form-input" id="inbodyHeight" step="0.1" placeholder="175.5">
+                            <input type="number" class="form-input" id="inbodyHeight" placeholder="175">
                         </div>
                         <div class="form-group">
                             <label class="form-label">체중 (kg)</label>
-                            <input type="number" class="form-input" id="inbodyWeight" step="0.1" placeholder="70.5">
+                            <input type="number" class="form-input" id="inbodyWeight" placeholder="70" step="0.1">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group">
                             <label class="form-label">체지방량 (kg)</label>
-                            <input type="number" class="form-input" id="inbodyFatMass" step="0.1" placeholder="12.5">
+                            <input type="number" class="form-input" id="inbodyFatMass" placeholder="10" step="0.1">
                         </div>
                         <div class="form-group">
                             <label class="form-label">체지방률 (%)</label>
-                            <input type="number" class="form-input" id="inbodyFatPercent" step="0.1" placeholder="15.5">
+                            <input type="number" class="form-input" id="inbodyFatPercent" placeholder="14" step="0.1">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="form-label">골격근량 (kg)</label>
-                        <input type="number" class="form-input" id="inbodyMuscle" step="0.1" placeholder="35.5">
+                        <input type="number" class="form-input" id="inbodyMuscle" placeholder="35" step="0.1">
                     </div>
                     <button class="btn btn-primary btn-full" id="saveInbodyBtn">저장하기</button>
                     <div id="inbodyStatus"></div>
                 </div>
             </div>
             
-            <!-- FMS 탭 -->
             <div id="fmsTab" style="display: none;">
                 <div class="card">
-                    <div class="card-header">
-                        <div class="card-title">🏃 FMS 평가</div>
-                    </div>
+                    <div class="card-header"><div class="card-title">🤸 FMS 측정</div></div>
                     <div class="form-group">
                         <label class="form-label">측정 날짜</label>
                         <input type="date" class="form-input" id="fmsDate">
                     </div>
                     <div class="form-row">
                         <div class="form-group">
-                            <label class="form-label">Deep Squat (0-3)</label>
-                            <input type="number" class="form-input" id="fmsDeepSquat" min="0" max="3" placeholder="2">
+                            <label class="form-label">Deep Squat</label>
+                            <input type="number" class="form-input" id="fmsDeepSquat" placeholder="0-3" min="0" max="3">
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Hurdle Step (0-3)</label>
-                            <input type="number" class="form-input" id="fmsHurdleStep" min="0" max="3" placeholder="2">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label">Inline Lunge (0-3)</label>
-                            <input type="number" class="form-input" id="fmsInlineLunge" min="0" max="3" placeholder="2">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Shoulder Mobility (0-3)</label>
-                            <input type="number" class="form-input" id="fmsShoulderMob" min="0" max="3" placeholder="2">
+                            <label class="form-label">Hurdle Step</label>
+                            <input type="number" class="form-input" id="fmsHurdleStep" placeholder="0-3" min="0" max="3">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group">
-                            <label class="form-label">ASLR (0-3)</label>
-                            <input type="number" class="form-input" id="fmsASLR" min="0" max="3" placeholder="2">
+                            <label class="form-label">Inline Lunge</label>
+                            <input type="number" class="form-input" id="fmsInlineLunge" placeholder="0-3" min="0" max="3">
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Trunk Stability (0-3)</label>
-                            <input type="number" class="form-input" id="fmsTrunkStability" min="0" max="3" placeholder="2">
+                            <label class="form-label">Shoulder Mobility</label>
+                            <input type="number" class="form-input" id="fmsShoulderMob" placeholder="0-3" min="0" max="3">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">ASLR</label>
+                            <input type="number" class="form-input" id="fmsASLR" placeholder="0-3" min="0" max="3">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Trunk Stability</label>
+                            <input type="number" class="form-input" id="fmsTrunkStability" placeholder="0-3" min="0" max="3">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Rotary Stability (0-3)</label>
-                        <input type="number" class="form-input" id="fmsRotaryStability" min="0" max="3" placeholder="2">
+                        <label class="form-label">Rotary Stability</label>
+                        <input type="number" class="form-input" id="fmsRotaryStability" placeholder="0-3" min="0" max="3">
                     </div>
                     <button class="btn btn-primary btn-full" id="saveFmsBtn">저장하기</button>
                     <div id="fmsStatus"></div>
                 </div>
             </div>
             
-            <!-- 런닝 능력 탭 -->
             <div id="runningTab" style="display: none;">
                 <div class="card">
-                    <div class="card-header">
-                        <div class="card-title">🏃‍♂️ 런닝 능력 측정</div>
-                    </div>
+                    <div class="card-header"><div class="card-title">🏃 런닝 테스트</div></div>
                     <div class="form-group">
                         <label class="form-label">측정 날짜</label>
                         <input type="date" class="form-input" id="runningDate">
@@ -551,48 +491,25 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label class="form-label">MAS (km/h)</label>
-                            <input type="number" class="form-input" id="runningMAS" step="0.1" placeholder="16.5">
+                            <input type="number" class="form-input" id="runningMAS" placeholder="15.0" step="0.1">
                         </div>
                         <div class="form-group">
                             <label class="form-label">Max Velocity (km/h)</label>
-                            <input type="number" class="form-input" id="runningMaxVel" step="0.1" placeholder="32.0">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label">VO2max (ml/kg/min)</label>
-                            <input type="number" class="form-input" id="runningVO2max" step="0.1" placeholder="55.0">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Lactate Phase 2 (km/h)</label>
-                            <input type="number" class="form-input" id="runningLactate2" step="0.1" placeholder="12.5">
+                            <input type="number" class="form-input" id="runningMaxVel" placeholder="30.0" step="0.1">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Lactate Phase 3 (km/h)</label>
-                        <input type="number" class="form-input" id="runningLactate3" step="0.1" placeholder="14.5">
+                        <label class="form-label">VO2max</label>
+                        <input type="number" class="form-input" id="runningVO2max" placeholder="55.0" step="0.1">
                     </div>
-                    <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #334155;">
-                        <label class="form-label" style="font-size: 15px; margin-bottom: 15px;">⚡ 스프린트 기록</label>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label">10m (초)</label>
-                                <input type="number" class="form-input" id="sprint10m" step="0.01" placeholder="1.85">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">30m (초)</label>
-                                <input type="number" class="form-input" id="sprint30m" step="0.01" placeholder="4.25">
-                            </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">10m Sprint (초)</label>
+                            <input type="number" class="form-input" id="sprint10m" placeholder="1.80" step="0.01">
                         </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label">50m (초)</label>
-                                <input type="number" class="form-input" id="sprint50m" step="0.01" placeholder="6.50">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">100m (초)</label>
-                                <input type="number" class="form-input" id="sprint100m" step="0.01" placeholder="12.80">
-                            </div>
+                        <div class="form-group">
+                            <label class="form-label">30m Sprint (초)</label>
+                            <input type="number" class="form-input" id="sprint30m" placeholder="4.20" step="0.01">
                         </div>
                     </div>
                     <button class="btn btn-primary btn-full" id="saveRunningBtn">저장하기</button>
@@ -602,798 +519,765 @@
         </div>
     </div>
 
-<script>
-// =====================================================
-// 설정
-// =====================================================
-const API_URL = "https://script.google.com/macros/s/AKfycbwhd09t-7hMy5APQPl9FYg7P6Z8vI-AbREC2wGvqK3kDDw08A4ow31ECa_MLh1o_2hS/exec";
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
 
-// 코치 계정 (실제로는 서버에서 관리)
-const COACHES = [
-    { id: "coach", pw: "1234", name: "코치" },
-    { id: "admin", pw: "admin", name: "관리자" }
-];
+    <script>
+    // =====================================================
+    // Firebase 설정
+    // =====================================================
+    const firebaseConfig = {
+        apiKey: "AIzaSyDhwvdHmU9tfwZVNHosFIeCVz-ejoWvQgU",
+        authDomain: "stribe-management.firebaseapp.com",
+        projectId: "stribe-management",
+        storageBucket: "stribe-management.firebasestorage.app",
+        messagingSenderId: "169343581314",
+        appId: "1:169343581314:web:5abfafa5bd6c98bc81c89b"
+    };
 
-let currentCoach = null;
-let players = [];
-let selectedPlayers = [];
-let conditionData = [];
-let currentSelectedPlayer = null; // 현재 선택된 선수 (컨디션 체크용)
+    // Firebase 초기화
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    const storage = firebase.storage();
 
-// =====================================================
-// 초기화
-// =====================================================
-document.addEventListener('DOMContentLoaded', function() {
-    initDate();
-    loadPlayers();
-    setupEventListeners();
-});
+    // =====================================================
+    // 전역 변수
+    // =====================================================
+    const COACHES = [
+        { id: "coach", pw: "1234", name: "코치" },
+        { id: "admin", pw: "admin", name: "관리자" }
+    ];
 
-function initDate() {
-    const today = new Date();
-    const dateStr = today.toLocaleDateString('ko-KR', { 
-        year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' 
+    let currentCoach = null;
+    let players = [];
+    let currentSelectedPlayer = null;
+    let selectedImageFile = null;
+
+    // =====================================================
+    // 초기화
+    // =====================================================
+    document.addEventListener('DOMContentLoaded', function() {
+        initDate();
+        loadPlayers();
+        setupEventListeners();
     });
-    document.getElementById('todayDate').textContent = dateStr;
-    
-    // 날짜 입력 기본값 (오늘)
-    const isoDate = today.toISOString().split('T')[0];
-    document.getElementById('strategyDate').value = isoDate;
-    document.getElementById('inbodyDate').value = isoDate;
-    document.getElementById('fmsDate').value = isoDate;
-    document.getElementById('runningDate').value = isoDate;
-    
-    // datetime-local 기본값
-    const now = new Date();
-    now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
-    document.getElementById('trainingDateTime').value = now.toISOString().slice(0, 16);
-}
 
-function loadPlayers() {
-    fetch(API_URL)
-        .then(r => r.json())
-        .then(data => {
-            console.log('API 응답 데이터:', data);
-            if (data && data.length > 0) {
-                console.log('첫 번째 선수 데이터 구조:', data[0]);
-            }
-            players = data.map(p => ({
-                name: p.name || p.이름,
-                birth: p.생년월일 || p.birthdate || p.birth || '',
-                team: p.team || p.팀,
-                pos: p.position || p.포지션,
-                sport: p.sport || p.종목
+    function initDate() {
+        const today = new Date();
+        const dateStr = today.toLocaleDateString('ko-KR', { 
+            year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' 
+        });
+        document.getElementById('todayDate').textContent = dateStr;
+        
+        const isoDate = today.toISOString().split('T')[0];
+        document.getElementById('strategyDate').value = isoDate;
+        document.getElementById('inbodyDate').value = isoDate;
+        document.getElementById('fmsDate').value = isoDate;
+        document.getElementById('runningDate').value = isoDate;
+        document.getElementById('trainingDate').value = isoDate;
+        
+        const hours = String(today.getHours()).padStart(2, '0');
+        const minutes = String(today.getMinutes()).padStart(2, '0');
+        document.getElementById('trainingTime').value = hours + ':' + minutes;
+    }
+
+    // =====================================================
+    // Firebase - 선수 목록 로드
+    // =====================================================
+    async function loadPlayers() {
+        try {
+            const snapshot = await db.collection('players').orderBy('name').get();
+            players = snapshot.docs.map(doc => ({
+                id: doc.id,
+                ...doc.data()
             }));
-            console.log('매핑된 선수 데이터:', players);
             renderPlayerGrids();
-        })
-        .catch((error) => {
-            console.error('API 호출 실패:', error);
-            // 오프라인 폴백
-            players = [
-                { name: "홍길동", birth: "2007-03-15", pos: "FW", team: "대전하나시티즌 U18" },
-                { name: "김철수", birth: "2007-08-22", pos: "MF", team: "대전하나시티즌 U18" },
-                { name: "이영희", birth: "2008-01-10", pos: "DF", team: "대전하나시티즌 U18" }
-            ];
+        } catch (error) {
+            console.error('선수 목록 로드 실패:', error);
+            players = [];
             renderPlayerGrids();
-        });
-}
+        }
+    }
 
-function renderPlayerGrids() {
-    const grids = ['conditionPlayerGrid', 'strategyPlayerGrid', 'testPlayerGrid'];
-    grids.forEach(gridId => {
-        const grid = document.getElementById(gridId);
+    function renderPlayerGrids() {
+        const grids = ['conditionPlayerGrid', 'strategyPlayerGrid', 'testPlayerGrid', 'trainingPlayerGrid'];
+        grids.forEach(gridId => {
+            const grid = document.getElementById(gridId);
+            if (!grid) return;
+            
+            if (players.length === 0) {
+                grid.innerHTML = '<div style="color: #64748b; text-align: center; padding: 20px;">등록된 선수가 없습니다</div>';
+                return;
+            }
+            
+            grid.innerHTML = players.map(p => {
+                let birthDisplay = '';
+                if (p.birthdate) {
+                    let birthStr = String(p.birthdate).trim();
+                    if (/^\d{5,6}$/.test(birthStr)) {
+                        if (birthStr.length === 5) birthStr = '0' + birthStr;
+                        birthDisplay = `${birthStr.slice(0, 2)}.${birthStr.slice(2, 4)}.${birthStr.slice(4, 6)}`;
+                    } else {
+                        birthDisplay = birthStr;
+                    }
+                }
+                return `
+                <div class="player-chip" data-player="${p.name}" data-birth="${p.birthdate || ''}" data-id="${p.id}">
+                    <div class="name">${p.name}</div>
+                    <div class="birth">${birthDisplay}</div>
+                </div>
+            `}).join('');
+            
+            grid.querySelectorAll('.player-chip').forEach(chip => {
+                chip.addEventListener('click', function() {
+                    if (gridId === 'trainingPlayerGrid') {
+                        this.classList.toggle('selected');
+                        updateTrainingSelectedCount();
+                    } else {
+                        grid.querySelectorAll('.player-chip').forEach(c => c.classList.remove('selected'));
+                        this.classList.add('selected');
+                        
+                        if (gridId === 'conditionPlayerGrid') {
+                            currentSelectedPlayer = this.dataset.player;
+                            loadConditionData(currentSelectedPlayer);
+                        }
+                    }
+                });
+            });
+        });
+    }
+
+    function updateTrainingSelectedCount() {
+        const grid = document.getElementById('trainingPlayerGrid');
         if (!grid) return;
+        const count = grid.querySelectorAll('.player-chip.selected').length;
+        document.getElementById('trainingSelectedCount').textContent = count + '명 선택';
+    }
+
+    function getTrainingSelectedPlayers() {
+        const grid = document.getElementById('trainingPlayerGrid');
+        if (!grid) return [];
+        return Array.from(grid.querySelectorAll('.player-chip.selected')).map(chip => ({
+            name: chip.dataset.player,
+            birth: chip.dataset.birth,
+            id: chip.dataset.id
+        }));
+    }
+
+    // =====================================================
+    // 이벤트 리스너
+    // =====================================================
+    function setupEventListeners() {
+        // 로그인
+        document.getElementById('loginBtn').addEventListener('click', handleLogin);
+        document.getElementById('loginPw').addEventListener('keypress', e => {
+            if (e.key === 'Enter') handleLogin();
+        });
         
-        grid.innerHTML = players.map(p => {
-            // 생년월일 포맷팅 (YYYY-MM-DD → YY.MM.DD)
-            let birthDisplay = '';
-            if (p.birth) {
-                const parts = p.birth.split('-');
-                if (parts.length === 3) {
-                    birthDisplay = `${parts[0].slice(2)}.${parts[1]}.${parts[2]}`;
-                } else {
-                    birthDisplay = p.birth;
-                }
-            }
-            return `
-            <div class="player-chip" data-player="${p.name}" data-birth="${p.birth || ''}">
-                <div class="name">${p.name}</div>
-                <div class="birth">${birthDisplay}</div>
-            </div>
-        `}).join('');
+        // 로그아웃
+        document.getElementById('logoutBtn').addEventListener('click', handleLogout);
         
-        // 클릭 이벤트
-        grid.querySelectorAll('.player-chip').forEach(chip => {
-            chip.addEventListener('click', function() {
-                // 모든 그리드에서 단일 선택으로 변경
-                grid.querySelectorAll('.player-chip').forEach(c => c.classList.remove('selected'));
-                this.classList.add('selected');
-                
-                // 컨디션 화면에서는 바로 데이터 로드
-                if (gridId === 'conditionPlayerGrid') {
-                    currentSelectedPlayer = this.dataset.player;
-                    loadConditionData(currentSelectedPlayer);
-                }
+        // 메뉴 카드
+        document.querySelectorAll('.menu-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const menu = this.dataset.menu;
+                showScreen(menu + 'Screen');
             });
         });
-    });
-}
-
-function updateSelectedPlayers(gridId) {
-    const grid = document.getElementById(gridId);
-    selectedPlayers = Array.from(grid.querySelectorAll('.player-chip.selected'))
-        .map(chip => chip.dataset.player);
-}
-
-// =====================================================
-// 이벤트 리스너
-// =====================================================
-function setupEventListeners() {
-    // 로그인
-    document.getElementById('loginBtn').addEventListener('click', handleLogin);
-    document.getElementById('loginPw').addEventListener('keypress', e => {
-        if (e.key === 'Enter') handleLogin();
-    });
-    
-    // 로그아웃
-    document.getElementById('logoutBtn').addEventListener('click', handleLogout);
-    
-    // 메뉴 카드
-    document.querySelectorAll('.menu-card').forEach(card => {
-        card.addEventListener('click', function() {
-            const menu = this.dataset.menu;
-            showScreen(menu + 'Screen');
+        
+        // 뒤로가기
+        document.querySelectorAll('.back-btn').forEach(btn => {
+            btn.addEventListener('click', () => showScreen('mainScreen'));
         });
-    });
-    
-    // 뒤로가기
-    document.querySelectorAll('.back-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
+        
+        // 탭 전환
+        setupTabNavigation();
+        
+        // 체크박스 토글
+        document.querySelectorAll('.checkbox-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                this.classList.toggle('checked');
+            });
+        });
+        
+        // 저장 버튼들
+        document.getElementById('saveTrainingBtn').addEventListener('click', saveTrainingLog);
+        document.getElementById('saveStrategyBtn').addEventListener('click', saveStrategy);
+        document.getElementById('saveInbodyBtn').addEventListener('click', () => saveTestResult('inbody'));
+        document.getElementById('saveFmsBtn').addEventListener('click', () => saveTestResult('fms'));
+        document.getElementById('saveRunningBtn').addEventListener('click', () => saveTestResult('running'));
+        
+        // 훈련 로그 선수 전체 선택/해제
+        document.getElementById('trainingSelectAll').addEventListener('click', function() {
+            document.querySelectorAll('#trainingPlayerGrid .player-chip').forEach(chip => chip.classList.add('selected'));
+            updateTrainingSelectedCount();
+        });
+        
+        document.getElementById('trainingDeselectAll').addEventListener('click', function() {
+            document.querySelectorAll('#trainingPlayerGrid .player-chip').forEach(chip => chip.classList.remove('selected'));
+            updateTrainingSelectedCount();
+        });
+        
+        // 새로고침 버튼들
+        document.getElementById('refreshCondition').addEventListener('click', () => {
+            loadPlayers();
+            if (currentSelectedPlayer) loadConditionData(currentSelectedPlayer);
+        });
+        document.getElementById('refreshTraining').addEventListener('click', () => {
+            loadPlayers();
+            loadTrainingHistory();
+        });
+        document.getElementById('refreshStrategy').addEventListener('click', loadPlayers);
+        document.getElementById('refreshTest').addEventListener('click', loadPlayers);
+        
+        // 훈련 시각 자동 포맷팅
+        document.getElementById('trainingTime').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/[^0-9]/g, '');
+            if (value.length >= 2) {
+                value = value.slice(0, 2) + ':' + value.slice(2, 4);
+            }
+            e.target.value = value.slice(0, 5);
+        });
+        
+        // 이미지 업로드
+        const uploadArea = document.getElementById('imageUploadArea');
+        const imageInput = document.getElementById('trainingImage');
+        
+        uploadArea.addEventListener('click', () => imageInput.click());
+        imageInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                selectedImageFile = file;
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const preview = document.getElementById('imagePreview');
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                    uploadArea.classList.add('has-image');
+                    uploadArea.innerHTML = '<div class="image-upload-text">✓ 이미지 선택됨 (클릭하여 변경)</div>';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+
+    function setupTabNavigation() {
+        document.querySelectorAll('.tab-nav').forEach(nav => {
+            nav.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    nav.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const tab = this.dataset.tab;
+                    const screen = nav.closest('.screen');
+                    
+                    if (screen.id === 'trainingScreen') {
+                        document.getElementById('trainingInputTab').style.display = tab === 'input' ? 'block' : 'none';
+                        document.getElementById('trainingHistoryTab').style.display = tab === 'history' ? 'block' : 'none';
+                        if (tab === 'history') loadTrainingHistory();
+                    }
+                    
+                    if (screen.id === 'testScreen') {
+                        document.getElementById('inbodyTab').style.display = tab === 'inbody' ? 'block' : 'none';
+                        document.getElementById('fmsTab').style.display = tab === 'fms' ? 'block' : 'none';
+                        document.getElementById('runningTab').style.display = tab === 'running' ? 'block' : 'none';
+                    }
+                });
+            });
+        });
+    }
+
+    // =====================================================
+    // 로그인/로그아웃
+    // =====================================================
+    function handleLogin() {
+        const id = document.getElementById('loginId').value.trim();
+        const pw = document.getElementById('loginPw').value;
+        const errorMsg = document.getElementById('errorMsg');
+        
+        const coach = COACHES.find(c => c.id === id && c.pw === pw);
+        
+        if (coach) {
+            currentCoach = coach;
             showScreen('mainScreen');
-        });
-    });
-    
-    // 탭 전환
-    setupTabNavigation();
-    
-    // 체크박스 토글
-    document.querySelectorAll('.checkbox-item').forEach(item => {
-        item.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            this.classList.toggle('checked');
-            const checkbox = this.querySelector('input');
-            checkbox.checked = this.classList.contains('checked');
-        });
-    });
-    
-    // 저장 버튼들
-    document.getElementById('saveTrainingBtn').addEventListener('click', saveTrainingLog);
-    document.getElementById('saveStrategyBtn').addEventListener('click', saveStrategy);
-    document.getElementById('saveInbodyBtn').addEventListener('click', () => saveTestResult('inbody'));
-    document.getElementById('saveFmsBtn').addEventListener('click', () => saveTestResult('fms'));
-    document.getElementById('saveRunningBtn').addEventListener('click', () => saveTestResult('running'));
-    
-    // 새로고침 버튼들
-    document.getElementById('refreshCondition').addEventListener('click', function() {
-        this.classList.add('loading');
-        this.textContent = '로딩...';
-        loadPlayers(); // 선수 목록도 새로고침
-        if (currentSelectedPlayer) {
-            loadConditionData(currentSelectedPlayer);
+            errorMsg.style.display = 'none';
+        } else {
+            errorMsg.textContent = '아이디 또는 비밀번호가 올바르지 않습니다.';
+            errorMsg.style.display = 'block';
         }
-        setTimeout(() => {
-            this.classList.remove('loading');
-            this.textContent = '🔄 새로고침';
-        }, 1000);
-    });
-    
-    document.getElementById('refreshTraining').addEventListener('click', function() {
-        this.classList.add('loading');
-        this.textContent = '로딩...';
-        loadTrainingHistory();
-        setTimeout(() => {
-            this.classList.remove('loading');
-            this.textContent = '🔄 새로고침';
-        }, 1000);
-    });
-    
-    document.getElementById('refreshStrategy').addEventListener('click', function() {
-        this.classList.add('loading');
-        this.textContent = '로딩...';
-        loadPlayers();
-        setTimeout(() => {
-            this.classList.remove('loading');
-            this.textContent = '🔄 새로고침';
-        }, 1000);
-    });
-    
-    document.getElementById('refreshTest').addEventListener('click', function() {
-        this.classList.add('loading');
-        this.textContent = '로딩...';
-        loadPlayers();
-        setTimeout(() => {
-            this.classList.remove('loading');
-            this.textContent = '🔄 새로고침';
-        }, 1000);
-    });
-}
+    }
 
-function setupTabNavigation() {
-    document.querySelectorAll('.tab-nav').forEach(nav => {
-        nav.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                // 같은 nav 내의 버튼들
-                nav.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                
-                const tab = this.dataset.tab;
-                const screen = nav.closest('.screen');
-                
-                // Training Log 탭
-                if (screen.id === 'trainingScreen') {
-                    document.getElementById('trainingInputTab').style.display = tab === 'input' ? 'block' : 'none';
-                    document.getElementById('trainingHistoryTab').style.display = tab === 'history' ? 'block' : 'none';
-                    if (tab === 'history') loadTrainingHistory();
-                }
-                
-                // Test Result 탭
-                if (screen.id === 'testScreen') {
-                    document.getElementById('inbodyTab').style.display = tab === 'inbody' ? 'block' : 'none';
-                    document.getElementById('fmsTab').style.display = tab === 'fms' ? 'block' : 'none';
-                    document.getElementById('runningTab').style.display = tab === 'running' ? 'block' : 'none';
-                }
+    function handleLogout() {
+        currentCoach = null;
+        showScreen('loginScreen');
+        document.getElementById('loginId').value = '';
+        document.getElementById('loginPw').value = '';
+    }
+
+    function showScreen(screenId) {
+        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+        document.getElementById(screenId).classList.add('active');
+    }
+
+    // =====================================================
+    // Firebase - 컨디션 데이터 로드
+    // =====================================================
+    async function loadConditionData(playerName) {
+        const container = document.getElementById('conditionDataContainer');
+        
+        if (!playerName) {
+            container.innerHTML = `<div class="empty-state"><div class="icon">👤</div><div class="text">선수를 선택하세요</div></div>`;
+            return;
+        }
+        
+        container.innerHTML = `<div class="loading"><div class="loading-spinner"></div><div>데이터 로딩 중...</div></div>`;
+        
+        // 최근 6일
+        const dates = [];
+        const today = new Date();
+        for (let i = 6; i >= 1; i--) {
+            const d = new Date(today);
+            d.setDate(d.getDate() - i);
+            const dateStr = d.toISOString().split('T')[0];
+            dates.push({
+                label: `${d.getMonth()+1}/${d.getDate()}`,
+                date: dateStr,
+                display: d.toLocaleDateString('ko-KR', { weekday: 'short' })
             });
-        });
-    });
-}
-
-// =====================================================
-// 로그인/로그아웃
-// =====================================================
-function handleLogin() {
-    const id = document.getElementById('loginId').value.trim();
-    const pw = document.getElementById('loginPw').value;
-    const errorMsg = document.getElementById('errorMsg');
-    
-    const coach = COACHES.find(c => c.id === id && c.pw === pw);
-    
-    if (coach) {
-        currentCoach = coach;
-        showScreen('mainScreen');
-        errorMsg.style.display = 'none';
-    } else {
-        errorMsg.textContent = '아이디 또는 비밀번호가 올바르지 않습니다.';
-        errorMsg.style.display = 'block';
-    }
-}
-
-function handleLogout() {
-    currentCoach = null;
-    showScreen('loginScreen');
-    document.getElementById('loginId').value = '';
-    document.getElementById('loginPw').value = '';
-}
-
-// =====================================================
-// 화면 전환
-// =====================================================
-function showScreen(screenId) {
-    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-    document.getElementById(screenId).classList.add('active');
-}
-
-// =====================================================
-// Personal Condition Check - 7일 테이블 형식
-// =====================================================
-function loadConditionData(playerName) {
-    const container = document.getElementById('conditionDataContainer');
-    
-    if (!playerName) {
-        container.innerHTML = `
-            <div class="empty-state">
-                <div class="icon">👤</div>
-                <div class="text">선수를 선택하세요</div>
-            </div>
-        `;
-        return;
-    }
-    
-    container.innerHTML = `
-        <div class="loading">
-            <div class="loading-spinner"></div>
-            <div>데이터 로딩 중...</div>
-        </div>
-    `;
-    
-    // 최근 6일 날짜 계산 (어제부터 6일 전까지)
-    const dates = [];
-    const today = new Date();
-    for (let i = 6; i >= 1; i--) {
-        const d = new Date(today);
-        d.setDate(d.getDate() - i);
-        const month = d.getMonth() + 1;
-        const day = d.getDate();
-        const year = d.getFullYear();
-        // 로컬 시간대로 YYYY-MM-DD 생성
-        const dateStr = `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-        dates.push({
-            label: `${month}/${day}`,
-            date: dateStr,
-            display: `${d.toLocaleDateString('ko-KR', { weekday: 'short' })}`
-        });
-    }
-    
-    console.log('Generated dates:', dates.map(d => d.date)); // 디버깅
-    
-    // API 호출 - 최근 6일 데이터
-    const dateFrom = dates[0].date;
-    const dateTo = dates[5].date;
-    
-    const params = new URLSearchParams({
-        action: 'getConditions',
-        dateFrom: dateFrom,
-        dateTo: dateTo,
-        players: playerName
-    });
-    
-    fetch(API_URL + '?' + params.toString())
-        .then(r => r.json())
-        .then(data => {
+        }
+        
+        try {
+            const snapshot = await db.collection('conditions')
+                .where('player', '==', playerName)
+                .where('date', '>=', dates[0].date)
+                .where('date', '<=', dates[5].date)
+                .get();
+            
+            const data = snapshot.docs.map(doc => doc.data());
             renderConditionTable(playerName, dates, data);
-        })
-        .catch(() => {
-            // 데모 데이터
-            const demoData = generateDemoConditionData7Days(playerName, dates);
-            renderConditionTable(playerName, dates, demoData);
-        });
-}
-
-function generateDemoConditionData7Days(playerName, dates) {
-    // 데모용 - 일부 날짜만 데이터 있음
-    return dates.filter((_, i) => i % 2 === 0 || i === 6).map(d => ({
-        player: playerName,
-        date: d.date,
-        breakfast: '07:30',
-        lunch: '12:00',
-        dinner: '18:30',
-        protein: Math.floor(Math.random() * 3) + 3,
-        water: (Math.random() * 1.5 + 1.5).toFixed(1),
-        injury: Math.random() > 0.7 ? '오른쪽 햄스트링' : '없음',
-        recovery: '폼롤러, 스트레칭',
-        rpe: Math.floor(Math.random() * 5) + 4,
-        trainingTime: [60, 90, 120][Math.floor(Math.random() * 3)],
-        trainingConcept: ['필드', '짐', '필드+짐'][Math.floor(Math.random() * 3)],
-        painNote: ''
-    }));
-}
-
-function renderConditionTable(playerName, dates, data) {
-    const container = document.getElementById('conditionDataContainer');
-    
-    // 날짜별 데이터 매핑
-    const dataByDate = {};
-    data.forEach(d => {
-        dataByDate[d.date] = d;
-    });
-    
-    // 디버깅
-    console.log('Data received:', data);
-    console.log('Data by date:', dataByDate);
-    
-    // 시간 포맷팅 헬퍼 (1899-12-30T04:02:08.000Z -> 04:02 또는 HH:MM)
-    const formatTime = (val) => {
-        if (!val) return null;
-        const str = String(val);
-        
-        // 이미 HH:MM 형식이면 그대로
-        if (/^\d{1,2}:\d{2}$/.test(str)) return str;
-        
-        // ISO 날짜 형식에서 시간 추출 (1899-12-30T04:02:08.000Z)
-        if (str.includes('T')) {
-            const timePart = str.split('T')[1];
-            if (timePart) {
-                const hm = timePart.substring(0, 5); // HH:MM
-                return hm;
-            }
+        } catch (error) {
+            console.error('컨디션 데이터 로드 실패:', error);
+            container.innerHTML = `<div class="empty-state"><div class="icon">⚠️</div><div class="text">데이터를 불러올 수 없습니다</div></div>`;
         }
-        
-        // Date 객체인 경우
-        if (str.includes('GMT') || str.includes('UTC')) {
-            try {
-                const d = new Date(val);
-                const h = String(d.getHours()).padStart(2, '0');
-                const m = String(d.getMinutes()).padStart(2, '0');
-                return h + ':' + m;
-            } catch (e) {
-                return str;
-            }
-        }
-        
-        return str;
-    };
-    
-    // 값 가져오기 헬퍼 (긴 텍스트는 작은 글씨로)
-    const getValue = (date, field) => {
-        const d = dataByDate[date];
-        if (!d) return '<span class="no-data">-</span>';
-        const val = d[field];
-        if (val === undefined || val === null || val === '') return '<span class="no-data">-</span>';
-        
-        // 시간 필드는 포맷팅
-        if (field === 'breakfast' || field === 'lunch' || field === 'dinner') {
-            const formatted = formatTime(val);
-            return formatted || '<span class="no-data">-</span>';
-        }
-        
-        // 텍스트 길이에 따라 클래스 적용
-        const str = String(val);
-        if (str.length > 6) {
-            return `<span class="long-text">${str}</span>`;
-        }
-        return str;
-    };
-    
-    // RPE 값 (색상 포함)
-    const getRpeValue = (date) => {
-        const d = dataByDate[date];
-        if (!d || !d.rpe) return '<span class="no-data">-</span>';
-        const rpe = parseInt(d.rpe);
-        const rpeClass = rpe <= 4 ? 'rpe-low' : (rpe <= 7 ? 'rpe-mid' : 'rpe-high');
-        return `<span class="rpe-cell ${rpeClass}">${rpe}</span>`;
-    };
-    
-    // 테이블 생성 - 왼쪽에 카테고리 그룹 열 추가
-    let html = `
-    <div class="card" style="padding: 15px;">
-        <div class="card-header">
-            <div class="card-title">📊 ${playerName} - 최근 6일 컨디션</div>
-        </div>
-        <div class="condition-table-wrapper">
-            <table class="condition-table">
-                <colgroup>
-                    <col style="width: 60px;">
-                    <col style="width: 70px;">
-                    ${dates.map(() => `<col style="width: calc((100% - 130px) / 6);">`).join('')}
-                </colgroup>
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th></th>
-                        ${dates.map(d => `
-                            <th class="day-header">
-                                ${d.label}<br><span style="font-weight: 400; font-size: 11px;">${d.display}</span>
-                            </th>
-                        `).join('')}
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- 영양 섹션 -->
-                    <tr>
-                        <td class="category-group" rowspan="5">🥗 영양</td>
-                        <td class="category-cell">아침</td>
-                        ${dates.map(d => `<td>${getValue(d.date, 'breakfast')}</td>`).join('')}
-                    </tr>
-                    <tr>
-                        <td class="category-cell">점심</td>
-                        ${dates.map(d => `<td>${getValue(d.date, 'lunch')}</td>`).join('')}
-                    </tr>
-                    <tr>
-                        <td class="category-cell">저녁</td>
-                        ${dates.map(d => `<td>${getValue(d.date, 'dinner')}</td>`).join('')}
-                    </tr>
-                    <tr>
-                        <td class="category-cell">단백질</td>
-                        ${dates.map(d => {
-                            const val = getValue(d.date, 'protein');
-                            return `<td>${val !== '<span class="no-data">-</span>' ? val + '회' : val}</td>`;
-                        }).join('')}
-                    </tr>
-                    <tr>
-                        <td class="category-cell">수분</td>
-                        ${dates.map(d => {
-                            const val = getValue(d.date, 'water');
-                            return `<td>${val !== '<span class="no-data">-</span>' ? val + 'L' : val}</td>`;
-                        }).join('')}
-                    </tr>
-                    
-                    <!-- 회복 섹션 -->
-                    <tr>
-                        <td class="category-group" rowspan="2">🩹 회복</td>
-                        <td class="category-cell">부상/통증</td>
-                        ${dates.map(d => `<td>${getValue(d.date, 'injury')}</td>`).join('')}
-                    </tr>
-                    <tr>
-                        <td class="category-cell">회복전략</td>
-                        ${dates.map(d => `<td>${getValue(d.date, 'recovery')}</td>`).join('')}
-                    </tr>
-                    
-                    <!-- 훈련 섹션 -->
-                    <tr>
-                        <td class="category-group" rowspan="3">💪 훈련</td>
-                        <td class="category-cell">컨셉</td>
-                        ${dates.map(d => `<td>${getValue(d.date, 'trainingConcept')}</td>`).join('')}
-                    </tr>
-                    <tr>
-                        <td class="category-cell">시간</td>
-                        ${dates.map(d => {
-                            const val = getValue(d.date, 'trainingTime');
-                            return `<td>${val !== '<span class="no-data">-</span>' ? val + '분' : val}</td>`;
-                        }).join('')}
-                    </tr>
-                    <tr>
-                        <td class="category-cell">RPE</td>
-                        ${dates.map(d => `<td>${getRpeValue(d.date)}</td>`).join('')}
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>`;
-    
-    container.innerHTML = html;
-}
-
-// =====================================================
-// Training Log
-// =====================================================
-function saveTrainingLog() {
-    const btn = document.getElementById('saveTrainingBtn');
-    const status = document.getElementById('trainingStatus');
-    
-    const data = {
-        action: 'saveTrainingLog',
-        datetime: document.getElementById('trainingDateTime').value,
-        concept: document.getElementById('trainingConcept').value,
-        duration: document.getElementById('trainingDuration').value,
-        purpose: document.getElementById('trainingPurpose').value,
-        content: document.getElementById('trainingContent').value
-    };
-    
-    if (!data.datetime || !data.concept || !data.duration) {
-        showStatus(status, '필수 항목을 입력해주세요.', 'error');
-        return;
     }
-    
-    btn.disabled = true;
-    btn.textContent = '저장 중...';
-    
-    const params = new URLSearchParams(data);
-    
-    fetch(API_URL + '?' + params.toString())
-        .then(r => r.json())
-        .then(result => {
-            btn.disabled = false;
-            btn.textContent = '저장하기';
-            if (result.success) {
-                showStatus(status, '✓ 저장되었습니다!', 'success');
-                clearTrainingForm();
-            } else {
-                showStatus(status, '저장 실패. 다시 시도해주세요.', 'error');
+
+    function renderConditionTable(playerName, dates, data) {
+        const container = document.getElementById('conditionDataContainer');
+        
+        const dataByDate = {};
+        data.forEach(d => { dataByDate[d.date] = d; });
+        
+        const formatTime = (val) => {
+            if (!val) return null;
+            const str = String(val);
+            if (/^\d{1,2}:\d{2}$/.test(str)) return str;
+            if (str.includes('T')) return str.split('T')[1].substring(0, 5);
+            return str;
+        };
+        
+        const getValue = (date, field) => {
+            const d = dataByDate[date];
+            if (!d) return '<span class="no-data">-</span>';
+            const val = d[field];
+            if (val === undefined || val === null || val === '') return '<span class="no-data">-</span>';
+            if (field === 'breakfast' || field === 'lunch' || field === 'dinner') {
+                return formatTime(val) || '<span class="no-data">-</span>';
             }
-        })
-        .catch(() => {
+            return String(val);
+        };
+        
+        const getRpeValue = (date) => {
+            const d = dataByDate[date];
+            if (!d || !d.rpe) return '<span class="no-data">-</span>';
+            const rpe = parseInt(d.rpe);
+            const rpeClass = rpe <= 4 ? 'rpe-low' : (rpe <= 7 ? 'rpe-mid' : 'rpe-high');
+            return `<span class="rpe-cell ${rpeClass}">${rpe}</span>`;
+        };
+        
+        let html = `
+        <div class="card" style="padding: 15px;">
+            <div class="card-header">
+                <div class="card-title">📊 ${playerName} - 최근 6일 컨디션</div>
+            </div>
+            <div class="condition-table-wrapper">
+                <table class="condition-table">
+                    <thead>
+                        <tr>
+                            <th colspan="2"></th>
+                            ${dates.map(d => `<th>${d.label}<br><small>${d.display}</small></th>`).join('')}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="category-group" rowspan="5">🥗 영양</td>
+                            <td class="category-cell">아침</td>
+                            ${dates.map(d => `<td>${getValue(d.date, 'breakfast')}</td>`).join('')}
+                        </tr>
+                        <tr>
+                            <td class="category-cell">점심</td>
+                            ${dates.map(d => `<td>${getValue(d.date, 'lunch')}</td>`).join('')}
+                        </tr>
+                        <tr>
+                            <td class="category-cell">저녁</td>
+                            ${dates.map(d => `<td>${getValue(d.date, 'dinner')}</td>`).join('')}
+                        </tr>
+                        <tr>
+                            <td class="category-cell">단백질</td>
+                            ${dates.map(d => {
+                                const val = getValue(d.date, 'protein');
+                                return `<td>${val !== '<span class="no-data">-</span>' ? val + '회' : val}</td>`;
+                            }).join('')}
+                        </tr>
+                        <tr>
+                            <td class="category-cell">수분</td>
+                            ${dates.map(d => {
+                                const val = getValue(d.date, 'water');
+                                return `<td>${val !== '<span class="no-data">-</span>' ? val + 'L' : val}</td>`;
+                            }).join('')}
+                        </tr>
+                        <tr>
+                            <td class="category-group" rowspan="2">🩹 회복</td>
+                            <td class="category-cell">부상/통증</td>
+                            ${dates.map(d => `<td>${getValue(d.date, 'injury')}</td>`).join('')}
+                        </tr>
+                        <tr>
+                            <td class="category-cell">회복전략</td>
+                            ${dates.map(d => `<td>${getValue(d.date, 'recovery')}</td>`).join('')}
+                        </tr>
+                        <tr>
+                            <td class="category-group" rowspan="4">💪 훈련</td>
+                            <td class="category-cell">컨셉</td>
+                            ${dates.map(d => `<td>${getValue(d.date, 'trainingConcept')}</td>`).join('')}
+                        </tr>
+                        <tr>
+                            <td class="category-cell">시간</td>
+                            ${dates.map(d => {
+                                const val = getValue(d.date, 'trainingTime');
+                                return `<td>${val !== '<span class="no-data">-</span>' ? val + '분' : val}</td>`;
+                            }).join('')}
+                        </tr>
+                        <tr>
+                            <td class="category-cell">RPE</td>
+                            ${dates.map(d => `<td>${getRpeValue(d.date)}</td>`).join('')}
+                        </tr>
+                        <tr>
+                            <td class="category-cell">훈련부하</td>
+                            ${dates.map(d => {
+                                const dayData = dataByDate[d.date];
+                                if (dayData && dayData.rpe && dayData.trainingTime) {
+                                    const rpe = parseFloat(dayData.rpe);
+                                    const time = parseFloat(dayData.trainingTime);
+                                    if (!isNaN(rpe) && !isNaN(time)) {
+                                        return `<td>${rpe * time}</td>`;
+                                    }
+                                }
+                                return '<td><span class="no-data">-</span></td>';
+                            }).join('')}
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>`;
+        
+        container.innerHTML = html;
+    }
+
+    // =====================================================
+    // Firebase - 훈련 일지 저장
+    // =====================================================
+    async function saveTrainingLog() {
+        const btn = document.getElementById('saveTrainingBtn');
+        const status = document.getElementById('trainingStatus');
+        
+        const selectedPlayers = getTrainingSelectedPlayers();
+        
+        if (selectedPlayers.length === 0) {
+            showStatus(status, '선수를 선택해주세요.', 'error');
+            return;
+        }
+        
+        const trainingDate = document.getElementById('trainingDate').value;
+        const trainingTime = document.getElementById('trainingTime').value;
+        const concept = document.getElementById('trainingConcept').value;
+        const duration = document.getElementById('trainingDuration').value;
+        const purpose = document.getElementById('trainingPurpose').value;
+        const content = document.getElementById('trainingContent').value;
+        
+        if (!trainingDate || !trainingTime || !concept || !duration) {
+            showStatus(status, '필수 항목을 입력해주세요.', 'error');
+            return;
+        }
+        
+        btn.disabled = true;
+        btn.textContent = '저장 중...';
+        
+        try {
+            let imageUrl = '';
+            
+            // 이미지 업로드
+            if (selectedImageFile) {
+                const fileName = `training/${Date.now()}_${selectedImageFile.name}`;
+                const storageRef = storage.ref(fileName);
+                await storageRef.put(selectedImageFile);
+                imageUrl = await storageRef.getDownloadURL();
+            }
+            
+            const datetime = trainingDate + 'T' + trainingTime;
+            const batch = db.batch();
+            
+            // 각 선수별로 저장
+            selectedPlayers.forEach(player => {
+                const docRef = db.collection('trainingLogs').doc();
+                batch.set(docRef, {
+                    datetime: datetime,
+                    concept: concept,
+                    duration: parseInt(duration),
+                    purpose: purpose,
+                    content: content,
+                    imageUrl: imageUrl,
+                    playerName: player.name,
+                    playerBirth: player.birth,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                });
+            });
+            
+            await batch.commit();
+            
             btn.disabled = false;
             btn.textContent = '저장하기';
-            // 데모: 성공으로 처리
-            showStatus(status, '✓ 저장되었습니다! (데모)', 'success');
+            showStatus(status, `✓ ${selectedPlayers.length}명의 훈련 기록이 저장되었습니다!`, 'success');
             clearTrainingForm();
-        });
-}
-
-function clearTrainingForm() {
-    document.getElementById('trainingConcept').value = '';
-    document.getElementById('trainingDuration').value = '';
-    document.getElementById('trainingPurpose').value = '';
-    document.getElementById('trainingContent').value = '';
-}
-
-function loadTrainingHistory() {
-    const container = document.getElementById('trainingHistoryList');
-    container.innerHTML = `
-        <div class="loading">
-            <div class="loading-spinner"></div>
-            <div>데이터 로딩 중...</div>
-        </div>
-    `;
-    
-    fetch(API_URL + '?action=getTrainingLogs')
-        .then(r => r.json())
-        .then(data => {
-            renderTrainingHistory(data);
-        })
-        .catch(() => {
-            // 데모 데이터
-            renderTrainingHistory([
-                { datetime: '2024-01-15 10:00', concept: '필드훈련', duration: 90, purpose: '체력 강화', content: '달리기 훈련 + 패스 연습' },
-                { datetime: '2024-01-14 14:00', concept: '짐훈련', duration: 60, purpose: '근력 강화', content: '하체 웨이트 트레이닝' }
-            ]);
-        });
-}
-
-function renderTrainingHistory(data) {
-    const container = document.getElementById('trainingHistoryList');
-    
-    if (!data || data.length === 0) {
-        container.innerHTML = `
-            <div class="empty-state">
-                <div class="icon">📋</div>
-                <div class="text">훈련 기록이 없습니다</div>
-            </div>
-        `;
-        return;
-    }
-    
-    container.innerHTML = data.map(log => `
-        <div class="condition-card">
-            <div class="condition-header">
-                <span class="condition-player">${log.concept}</span>
-                <span class="condition-date">${log.datetime}</span>
-            </div>
-            <div class="condition-grid">
-                <div class="condition-item">
-                    <span class="condition-label">시간</span>
-                    <span class="condition-value">${log.duration}분</span>
-                </div>
-                <div class="condition-item">
-                    <span class="condition-label">목적</span>
-                    <span class="condition-value">${log.purpose || '-'}</span>
-                </div>
-            </div>
-            <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #334155;">
-                <div class="condition-label" style="margin-bottom: 5px;">내용</div>
-                <div style="color: #e2e8f0; font-size: 14px; line-height: 1.5;">${log.content || '-'}</div>
-            </div>
-        </div>
-    `).join('');
-}
-
-// =====================================================
-// Conditioning Strategy
-// =====================================================
-function saveStrategy() {
-    const btn = document.getElementById('saveStrategyBtn');
-    const status = document.getElementById('strategyStatus');
-    
-    const selectedPlayer = document.querySelector('#strategyPlayerGrid .player-chip.selected');
-    if (!selectedPlayer) {
-        showStatus(status, '선수를 선택해주세요.', 'error');
-        return;
-    }
-    
-    const recoveryMethods = Array.from(document.querySelectorAll('#strategyRecoveryGrid .checkbox-item.checked'))
-        .map(item => item.dataset.value);
-    
-    const data = {
-        action: 'saveStrategy',
-        player: selectedPlayer.dataset.player,
-        date: document.getElementById('strategyDate').value,
-        water: document.getElementById('strategyWater').value,
-        protein: document.getElementById('strategyProtein').value,
-        food: document.getElementById('strategyFood').value,
-        recovery: recoveryMethods.join(', '),
-        exercise: document.getElementById('strategyExercise').value,
-        videoLink: document.getElementById('strategyVideoLink').value
-    };
-    
-    btn.disabled = true;
-    btn.textContent = '저장 중...';
-    
-    const params = new URLSearchParams(data);
-    
-    fetch(API_URL + '?' + params.toString())
-        .then(r => r.json())
-        .then(result => {
+            
+        } catch (error) {
+            console.error('저장 실패:', error);
             btn.disabled = false;
             btn.textContent = '저장하기';
-            if (result.success) {
-                showStatus(status, '✓ 저장되었습니다!', 'success');
-            } else {
-                showStatus(status, '저장 실패. 다시 시도해주세요.', 'error');
+            showStatus(status, '저장 실패. 다시 시도해주세요.', 'error');
+        }
+    }
+
+    function clearTrainingForm() {
+        document.getElementById('trainingConcept').value = '';
+        document.getElementById('trainingDuration').value = '';
+        document.getElementById('trainingPurpose').value = '';
+        document.getElementById('trainingContent').value = '';
+        document.querySelectorAll('#trainingPlayerGrid .player-chip').forEach(chip => chip.classList.remove('selected'));
+        updateTrainingSelectedCount();
+        
+        // 이미지 초기화
+        selectedImageFile = null;
+        document.getElementById('imagePreview').style.display = 'none';
+        document.getElementById('trainingImage').value = '';
+        const uploadArea = document.getElementById('imageUploadArea');
+        uploadArea.classList.remove('has-image');
+        uploadArea.innerHTML = '<div class="image-upload-icon">📷</div><div class="image-upload-text">클릭하여 이미지 선택</div>';
+    }
+
+    // =====================================================
+    // Firebase - 훈련 기록 조회
+    // =====================================================
+    async function loadTrainingHistory() {
+        const container = document.getElementById('trainingHistoryList');
+        container.innerHTML = `<div class="loading"><div class="loading-spinner"></div><div>데이터 로딩 중...</div></div>`;
+        
+        try {
+            const snapshot = await db.collection('trainingLogs')
+                .orderBy('createdAt', 'desc')
+                .limit(20)
+                .get();
+            
+            const logs = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            
+            if (logs.length === 0) {
+                container.innerHTML = '<div class="empty-state"><div class="icon">📭</div><div class="text">훈련 기록이 없습니다</div></div>';
+                return;
             }
-        })
-        .catch(() => {
-            btn.disabled = false;
-            btn.textContent = '저장하기';
-            showStatus(status, '✓ 저장되었습니다! (데모)', 'success');
-        });
-}
+            
+            // 날짜+시간별로 그룹핑
+            const grouped = {};
+            logs.forEach(log => {
+                const key = log.datetime;
+                if (!grouped[key]) grouped[key] = { ...log, players: [] };
+                grouped[key].players.push(log.playerName);
+            });
+            
+            let html = '';
+            Object.values(grouped).forEach(log => {
+                const date = log.datetime ? log.datetime.split('T')[0] : '';
+                const time = log.datetime ? log.datetime.split('T')[1] : '';
+                
+                html += `
+                <div style="background: #0f172a; border-radius: 12px; padding: 16px; margin-bottom: 12px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                        <span style="color: #3b82f6; font-weight: 600;">${log.concept || '훈련'}</span>
+                        <span style="color: #64748b; font-size: 13px;">${date} ${time}</span>
+                    </div>
+                    <div style="color: #94a3b8; font-size: 13px; margin-bottom: 8px;">
+                        ⏱️ ${log.duration}분 | 👥 ${log.players.join(', ')}
+                    </div>
+                    ${log.purpose ? `<div style="color: #e2e8f0; font-size: 14px; margin-bottom: 6px;"><strong>목적:</strong> ${log.purpose}</div>` : ''}
+                    ${log.content ? `<div style="color: #e2e8f0; font-size: 14px;"><strong>내용:</strong> ${log.content}</div>` : ''}
+                    ${log.imageUrl ? `<img src="${log.imageUrl}" style="max-width: 100%; border-radius: 8px; margin-top: 10px;">` : ''}
+                </div>`;
+            });
+            
+            container.innerHTML = html;
+            
+        } catch (error) {
+            console.error('훈련 기록 로드 실패:', error);
+            container.innerHTML = '<div class="empty-state"><div class="icon">⚠️</div><div class="text">데이터를 불러올 수 없습니다</div></div>';
+        }
+    }
 
-// =====================================================
-// Test Result
-// =====================================================
-function saveTestResult(type) {
-    const selectedPlayer = document.querySelector('#testPlayerGrid .player-chip.selected');
-    let btn, status, data;
-    
-    if (!selectedPlayer) {
-        const statusEl = document.getElementById(type + 'Status');
-        showStatus(statusEl, '선수를 선택해주세요.', 'error');
-        return;
-    }
-    
-    if (type === 'inbody') {
-        btn = document.getElementById('saveInbodyBtn');
-        status = document.getElementById('inbodyStatus');
-        data = {
-            action: 'saveTestResult',
-            type: 'inbody',
+    // =====================================================
+    // Firebase - 과제 저장
+    // =====================================================
+    async function saveStrategy() {
+        const selectedPlayer = document.querySelector('#strategyPlayerGrid .player-chip.selected');
+        const btn = document.getElementById('saveStrategyBtn');
+        const status = document.getElementById('strategyStatus');
+        
+        if (!selectedPlayer) {
+            showStatus(status, '선수를 선택해주세요.', 'error');
+            return;
+        }
+        
+        const recoveryMethods = Array.from(document.querySelectorAll('#strategyScreen .checkbox-item.checked'))
+            .map(item => item.dataset.value);
+        
+        const data = {
             player: selectedPlayer.dataset.player,
-            date: document.getElementById('inbodyDate').value,
-            height: document.getElementById('inbodyHeight').value,
-            weight: document.getElementById('inbodyWeight').value,
-            fatMass: document.getElementById('inbodyFatMass').value,
-            fatPercent: document.getElementById('inbodyFatPercent').value,
-            muscle: document.getElementById('inbodyMuscle').value
+            playerBirth: selectedPlayer.dataset.birth,
+            date: document.getElementById('strategyDate').value,
+            water: document.getElementById('strategyWater').value,
+            protein: document.getElementById('strategyProtein').value,
+            food: document.getElementById('strategyFood').value,
+            recovery: recoveryMethods.join(', '),
+            exercise: document.getElementById('strategyExercise').value,
+            videoLink: document.getElementById('strategyVideoLink').value,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp()
         };
-    } else if (type === 'fms') {
-        btn = document.getElementById('saveFmsBtn');
-        status = document.getElementById('fmsStatus');
-        data = {
-            action: 'saveTestResult',
-            type: 'fms',
-            player: selectedPlayer.dataset.player,
-            date: document.getElementById('fmsDate').value,
-            deepSquat: document.getElementById('fmsDeepSquat').value,
-            hurdleStep: document.getElementById('fmsHurdleStep').value,
-            inlineLunge: document.getElementById('fmsInlineLunge').value,
-            shoulderMob: document.getElementById('fmsShoulderMob').value,
-            aslr: document.getElementById('fmsASLR').value,
-            trunkStability: document.getElementById('fmsTrunkStability').value,
-            rotaryStability: document.getElementById('fmsRotaryStability').value
-        };
-    } else if (type === 'running') {
-        btn = document.getElementById('saveRunningBtn');
-        status = document.getElementById('runningStatus');
-        data = {
-            action: 'saveTestResult',
-            type: 'running',
-            player: selectedPlayer.dataset.player,
-            date: document.getElementById('runningDate').value,
-            mas: document.getElementById('runningMAS').value,
-            maxVel: document.getElementById('runningMaxVel').value,
-            vo2max: document.getElementById('runningVO2max').value,
-            lactate2: document.getElementById('runningLactate2').value,
-            lactate3: document.getElementById('runningLactate3').value,
-            sprint10m: document.getElementById('sprint10m').value,
-            sprint30m: document.getElementById('sprint30m').value,
-            sprint50m: document.getElementById('sprint50m').value,
-            sprint100m: document.getElementById('sprint100m').value
-        };
-    }
-    
-    btn.disabled = true;
-    btn.textContent = '저장 중...';
-    
-    const params = new URLSearchParams(data);
-    
-    fetch(API_URL + '?' + params.toString())
-        .then(r => r.json())
-        .then(result => {
-            btn.disabled = false;
-            btn.textContent = '저장하기';
-            if (result.success) {
-                showStatus(status, '✓ 저장되었습니다!', 'success');
+        
+        btn.disabled = true;
+        btn.textContent = '저장 중...';
+        
+        try {
+            // 같은 날짜, 같은 선수의 기존 과제 확인
+            const existing = await db.collection('tasks')
+                .where('player', '==', data.player)
+                .where('date', '==', data.date)
+                .get();
+            
+            if (!existing.empty) {
+                // 기존 과제 업데이트
+                await existing.docs[0].ref.update(data);
             } else {
-                showStatus(status, '저장 실패. 다시 시도해주세요.', 'error');
+                // 새 과제 추가
+                await db.collection('tasks').add(data);
             }
-        })
-        .catch(() => {
+            
             btn.disabled = false;
             btn.textContent = '저장하기';
-            showStatus(status, '✓ 저장되었습니다! (데모)', 'success');
-        });
-}
+            showStatus(status, '✓ 저장되었습니다!', 'success');
+            
+        } catch (error) {
+            console.error('과제 저장 실패:', error);
+            btn.disabled = false;
+            btn.textContent = '저장하기';
+            showStatus(status, '저장 실패. 다시 시도해주세요.', 'error');
+        }
+    }
 
-// =====================================================
-// 유틸리티
-// =====================================================
-function showStatus(element, message, type) {
-    element.innerHTML = `<div class="status-msg status-${type}">${message}</div>`;
-    setTimeout(() => {
-        element.innerHTML = '';
-    }, 3000);
-}
-</script>
+    // =====================================================
+    // Firebase - 테스트 결과 저장
+    // =====================================================
+    async function saveTestResult(type) {
+        const selectedPlayer = document.querySelector('#testPlayerGrid .player-chip.selected');
+        let btn, status, data;
+        
+        if (!selectedPlayer) {
+            const statusEl = document.getElementById(type + 'Status');
+            showStatus(statusEl, '선수를 선택해주세요.', 'error');
+            return;
+        }
+        
+        const baseData = {
+            type: type,
+            player: selectedPlayer.dataset.player,
+            playerBirth: selectedPlayer.dataset.birth,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        };
+        
+        if (type === 'inbody') {
+            btn = document.getElementById('saveInbodyBtn');
+            status = document.getElementById('inbodyStatus');
+            data = {
+                ...baseData,
+                date: document.getElementById('inbodyDate').value,
+                height: document.getElementById('inbodyHeight').value,
+                weight: document.getElementById('inbodyWeight').value,
+                fatMass: document.getElementById('inbodyFatMass').value,
+                fatPercent: document.getElementById('inbodyFatPercent').value,
+                muscle: document.getElementById('inbodyMuscle').value
+            };
+        } else if (type === 'fms') {
+            btn = document.getElementById('saveFmsBtn');
+            status = document.getElementById('fmsStatus');
+            const scores = {
+                deepSquat: parseInt(document.getElementById('fmsDeepSquat').value) || 0,
+                hurdleStep: parseInt(document.getElementById('fmsHurdleStep').value) || 0,
+                inlineLunge: parseInt(document.getElementById('fmsInlineLunge').value) || 0,
+                shoulderMob: parseInt(document.getElementById('fmsShoulderMob').value) || 0,
+                aslr: parseInt(document.getElementById('fmsASLR').value) || 0,
+                trunkStability: parseInt(document.getElementById('fmsTrunkStability').value) || 0,
+                rotaryStability: parseInt(document.getElementById('fmsRotaryStability').value) || 0
+            };
+            data = {
+                ...baseData,
+                date: document.getElementById('fmsDate').value,
+                ...scores,
+                total: Object.values(scores).reduce((a, b) => a + b, 0)
+            };
+        } else if (type === 'running') {
+            btn = document.getElementById('saveRunningBtn');
+            status = document.getElementById('runningStatus');
+            data = {
+                ...baseData,
+                date: document.getElementById('runningDate').value,
+                mas: document.getElementById('runningMAS').value,
+                maxVel: document.getElementById('runningMaxVel').value,
+                vo2max: document.getElementById('runningVO2max').value,
+                sprint10m: document.getElementById('sprint10m').value,
+                sprint30m: document.getElementById('sprint30m').value
+            };
+        }
+        
+        btn.disabled = true;
+        btn.textContent = '저장 중...';
+        
+        try {
+            await db.collection('testResults').add(data);
+            btn.disabled = false;
+            btn.textContent = '저장하기';
+            showStatus(status, '✓ 저장되었습니다!', 'success');
+        } catch (error) {
+            console.error('테스트 결과 저장 실패:', error);
+            btn.disabled = false;
+            btn.textContent = '저장하기';
+            showStatus(status, '저장 실패. 다시 시도해주세요.', 'error');
+        }
+    }
+
+    // =====================================================
+    // 유틸리티
+    // =====================================================
+    function showStatus(element, message, type) {
+        element.innerHTML = `<div class="status-msg status-${type}">${message}</div>`;
+        setTimeout(() => { element.innerHTML = ''; }, 3000);
+    }
+    </script>
 </body>
 </html>
